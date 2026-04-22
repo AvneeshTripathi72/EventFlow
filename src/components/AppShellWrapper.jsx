@@ -21,10 +21,21 @@ export function AppShellWrapper({ children }) {
     let targetY = 12;
 
     const tick = () => {
-      currentX += (targetX - currentX) * 0.085;
-      currentY += (targetY - currentY) * 0.085;
-      root.style.setProperty('--mx', `${currentX.toFixed(2)}%`);
-      root.style.setProperty('--my', `${currentY.toFixed(2)}%`);
+      const dx = targetX - currentX;
+      const dy = targetY - currentY;
+      
+      // Only update if there's meaningful movement
+      if (Math.abs(dx) > 0.01 || Math.abs(dy) > 0.01) {
+        currentX += dx * 0.085;
+        currentY += dy * 0.085;
+        
+        const nextX = currentX.toFixed(2);
+        const nextY = currentY.toFixed(2);
+        
+        root.style.setProperty('--mx', `${nextX}%`);
+        root.style.setProperty('--my', `${nextY}%`);
+      }
+      
       rafId = globalThis.requestAnimationFrame(tick);
     };
 

@@ -22,7 +22,11 @@ export default function ContactPage() {
             <a href="tel:+919876543210">+91 98765 43210</a>
             <a href="mailto:magneventsdotin@gmail.com">magneventsdotin@gmail.com</a>
             <p>Mon-Sat: 10:00 AM - 8:00 PM</p>
-            <div>
+            <div className="contact-social-links" style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
+              <a href="https://www.instagram.com/magnevents.in?utm_source=qr&igsh=Y29qa2cxY25rNmtk" target="_blank" rel="noreferrer" style={{ color: 'var(--text-brand)' }}>Instagram</a>
+              <a href="https://youtube.com/@magnevents?si=fIU-2dKaLsG1DAJu" target="_blank" rel="noreferrer" style={{ color: 'var(--text-brand)' }}>YouTube</a>
+            </div>
+            <div style={{ marginTop: '20px' }}>
               <span>Delhi</span>
               <span>Mumbai</span>
               <span>Bengaluru</span>

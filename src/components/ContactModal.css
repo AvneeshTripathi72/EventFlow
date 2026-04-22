@@ -112,8 +112,83 @@
   box-shadow: 0 0 0 4px rgba(246, 182, 78, 0.1);
 }
 
+.lux-modal-tabs {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 2px;
+}
+
+.lux-tab-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 4px;
+  cursor: pointer;
+  position: relative;
+  transition: all 300ms ease;
+}
+
+.lux-tab-btn:hover {
+  color: #fff;
+}
+
+.lux-tab-btn.is-active {
+  color: #f6b64e;
+}
+
+.lux-tab-btn.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #f6b64e;
+  border-radius: 99px;
+  box-shadow: 0 0 15px rgba(246, 182, 78, 0.5);
+}
+
+.lux-select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 14px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.lux-select option {
+  background: #121110;
+  color: #fff;
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #f6b64e 0%, #d49a3d 100%) !important;
+  color: #121110 !important;
+  border-radius: 99px;
+  padding: 12px 36px;
+  font-weight: 800;
+  font-size: 15px;
+  box-shadow: 0 10px 25px rgba(246, 182, 78, 0.25);
+  border: none;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(246, 182, 78, 0.4);
+  filter: brightness(1.1);
+}
+
 .lux-modal-footer {
-  margin-top: 12px;
+  margin-top: 24px;
   display: flex;
   justify-content: flex-end;
   gap: 16px;
@@ -123,23 +198,15 @@
 .btn-cancel {
   color: rgba(255, 255, 255, 0.5);
   background: none;
+  border: none;
   font-weight: 600;
   font-size: 14px;
+  cursor: pointer;
   transition: color 200ms ease;
 }
 
 .btn-cancel:hover {
   color: #fff;
-}
-
-.btn-submit {
-  background: linear-gradient(135deg, #c02424 0%, #8b0000 100%);
-  color: #fff;
-  border-radius: 99px;
-  padding: 12px 32px;
-  font-weight: 700;
-  font-size: 15px;
-  box-shadow: 0 10px 20px rgba(139, 0, 0, 0.3);
 }
 
 .lux-modal-success {
@@ -150,8 +217,8 @@
 .lux-success-icon {
   width: 64px;
   height: 64px;
-  background: #10b981;
-  color: #fff;
+  background: #f6b64e;
+  color: #121110;
   font-size: 32px;
   display: flex;
   align-items: center;
@@ -179,5 +246,8 @@
   }
   .lux-modal-header h3 {
     font-size: 26px;
+  }
+  .lux-modal-tabs {
+    gap: 12px;
   }
 }
