@@ -1,0 +1,183 @@
+.lux-modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.lux-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.lux-modal-content {
+  position: relative;
+  width: min(600px, 100%);
+  background: #121110;
+  border: 1px solid rgba(246, 182, 78, 0.2);
+  border-radius: 28px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8), 0 0 50px rgba(246, 182, 78, 0.05);
+  padding: 40px;
+  overflow: hidden;
+   isolation: isolate;
+}
+
+.lux-modal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 32px;
+  height: 32px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 200ms ease;
+  z-index: 10;
+}
+
+.lux-modal-close:hover {
+  background: rgba(192, 36, 36, 0.2);
+  border-color: #c02424;
+  color: #c02424;
+}
+
+.lux-modal-header {
+  margin-bottom: 32px;
+}
+
+.lux-modal-header h3 {
+  font-size: 32px;
+  color: #f6b64e;
+  margin: 0 0 8px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.lux-modal-header p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 15px;
+  margin: 0;
+}
+
+.lux-modal-form {
+  display: grid;
+  gap: 20px;
+}
+
+.lux-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.lux-form-group {
+  display: grid;
+  gap: 8px;
+}
+
+.lux-form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #bfaea1;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.lux-form-group input,
+.lux-form-group textarea {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 14px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: all 200ms ease;
+}
+
+.lux-form-group input:focus,
+.lux-form-group textarea:focus {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: #f6b64e;
+  box-shadow: 0 0 0 4px rgba(246, 182, 78, 0.1);
+}
+
+.lux-modal-footer {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  align-items: center;
+}
+
+.btn-cancel {
+  color: rgba(255, 255, 255, 0.5);
+  background: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: color 200ms ease;
+}
+
+.btn-cancel:hover {
+  color: #fff;
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #c02424 0%, #8b0000 100%);
+  color: #fff;
+  border-radius: 99px;
+  padding: 12px 32px;
+  font-weight: 700;
+  font-size: 15px;
+  box-shadow: 0 10px 20px rgba(139, 0, 0, 0.3);
+}
+
+.lux-modal-success {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.lux-success-icon {
+  width: 64px;
+  height: 64px;
+  background: #10b981;
+  color: #fff;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 99px;
+  margin: 0 auto 20px;
+}
+
+.lux-modal-success h4 {
+  font-size: 24px;
+  color: #fff;
+  margin: 0 0 10px;
+}
+
+.lux-modal-success p {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 640px) {
+  .lux-modal-content {
+    padding: 30px 20px;
+  }
+  .lux-form-row {
+    grid-template-columns: 1fr;
+  }
+  .lux-modal-header h3 {
+    font-size: 26px;
+  }
+}

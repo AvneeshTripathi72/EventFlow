@@ -1,0 +1,429 @@
+/* ── Footer — Onyx / Gold Luxury Theme ───────────────────────────────── */
+.lux-footer {
+  position: relative;
+  margin-top: clamp(60px, 8vw, 96px);
+  background: linear-gradient(180deg, #0a0806 0%, #0d0b09 50%, #111010 100%);
+  color: #f0e6d6;
+  overflow: hidden;
+  border-top: 1px solid rgba(246, 182, 78, 0.12);
+}
+
+.lux-footer-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image:
+    linear-gradient(rgba(246, 182, 78, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(246, 182, 78, 0.15) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(circle at center, black 20%, transparent 80%);
+}
+
+.lux-footer-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(48px, 6vw, 68px) 24px 32px;
+}
+
+/* ── Hero CTA Banner ─────────────────────────────────────────────────── */
+.lux-footer .lux-footer-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 32px;
+  border-radius: 32px;
+  border: 1px solid rgba(246, 182, 78, 0.15);
+  background: linear-gradient(135deg, rgba(18, 14, 10, 0.95) 0%, rgba(8, 6, 4, 0.98) 100%);
+  padding: clamp(28px, 5vw, 52px);
+  color: #fff;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.lux-footer .lux-footer-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(246, 182, 78, 0.06) 10%, transparent 46%, rgba(246, 182, 78, 0.04) 92%);
+}
+
+.lux-footer-kicker {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-gold, #f6b64e);
+  font-weight: 700;
+}
+
+.lux-footer .lux-footer-hero h3 {
+  margin-top: 8px;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: clamp(34px, 4.6vw, 58px);
+  line-height: 0.98;
+  letter-spacing: -0.8px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.4);
+}
+
+.lux-footer .lux-footer-copy {
+  margin: 14px 0 0;
+  color: rgba(240, 230, 214, 0.7);
+  max-width: 620px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.lux-footer-metrics {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.lux-footer-metrics span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(240, 230, 214, 0.85);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.lux-footer-metrics strong {
+  color: #fff;
+  font-weight: 800;
+}
+
+.lux-footer-hero-cta {
+  border-radius: 99px;
+  padding: 16px 36px;
+  text-decoration: none;
+  background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+  color: #fff !important;
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 10px 30px rgba(196, 30, 58, 0.3);
+  transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.lux-footer-hero-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(196, 30, 58, 0.45);
+  background: linear-gradient(135deg, #d42442 0%, #a00000 100%);
+}
+
+/* ── Newsletter Strip ────────────────────────────────────────────────── */
+.lux-footer-newsletter {
+  margin-top: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 24px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  transition: all 300ms ease;
+  backdrop-filter: blur(10px);
+}
+
+.lux-footer-newsletter:hover {
+  border-color: rgba(246, 182, 78, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.lux-footer-newsletter h4 {
+  margin: 0;
+  font-size: 17px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.lux-footer-newsletter p {
+  margin: 4px 0 0;
+  color: rgba(240, 230, 214, 0.6);
+  font-size: 14px;
+}
+
+.lux-footer-newsletter-form {
+  min-width: min(420px, 100%);
+  display: flex;
+  gap: 10px;
+}
+
+.lux-footer-newsletter-form input {
+  flex: 1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #f0e6d6;
+  font-size: 14px;
+  min-height: 46px;
+  transition: border-color 300ms ease;
+}
+
+.lux-footer-newsletter-form input::placeholder {
+  color: rgba(240, 230, 214, 0.35);
+}
+
+.lux-footer-newsletter-form input:focus {
+  outline: none;
+  border-color: var(--brand-gold, #f6b64e);
+}
+
+.lux-footer-newsletter-form button {
+  border: none;
+  border-radius: 999px;
+  background: var(--brand-gold, #f6b64e);
+  padding: 12px 24px;
+  color: #111;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 300ms ease;
+  min-height: 46px;
+  white-space: nowrap;
+}
+
+.lux-footer-newsletter-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(246, 182, 78, 0.3);
+  background: #ffc94d;
+}
+
+/* ── Link Grid ───────────────────────────────────────────────────────── */
+.lux-footer-grid {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: minmax(260px, 1.35fr) repeat(4, minmax(0, 1fr));
+  gap: 28px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.lux-footer-grid > div:not(.lux-footer-brand-col) {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 20px 16px;
+  transition: all 300ms ease;
+}
+
+.lux-footer-grid > div:not(.lux-footer-brand-col):hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(246, 182, 78, 0.12);
+}
+
+.lux-footer-brand-col p {
+  margin-top: 14px;
+  color: rgba(240, 230, 214, 0.55);
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 300px;
+}
+
+/* ── Social Icons ────────────────────────────────────────────────────── */
+.lux-footer-social-row {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.lux-footer-social-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(240, 230, 214, 0.6);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 300ms ease;
+}
+
+.lux-footer-social-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.lux-footer-social-btn:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.lux-footer-social-btn.is-whatsapp:hover { color: #25D366; }
+.lux-footer-social-btn.is-instagram:hover { color: #E1306C; }
+.lux-footer-social-btn.is-youtube:hover { color: #FF0000; }
+.lux-footer-social-btn.is-twitter:hover { color: #1DA1F2; }
+.lux-footer-social-btn.is-linkedin:hover { color: #0A66C2; }
+
+/* ── Column Headings & Links ─────────────────────────────────────────── */
+.lux-footer-grid h5 {
+  margin: 0 0 14px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--brand-gold, #f6b64e);
+  font-weight: 800;
+}
+
+.lux-footer-grid a {
+  display: block;
+  text-decoration: none;
+  color: rgba(240, 230, 214, 0.6);
+  font-size: 14px;
+  line-height: 1.8;
+  transition: all 250ms ease;
+  width: fit-content;
+}
+
+.lux-footer-grid a:not(.lux-footer-social-btn):hover {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+/* ── Bottom Bar ──────────────────────────────────────────────────────── */
+.lux-footer-bottom {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+}
+
+.lux-footer-bottom > span {
+  color: rgba(240, 230, 214, 0.4);
+  font-size: 13px;
+}
+
+.lux-footer-pills {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lux-footer-pills span {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 12px;
+  color: rgba(240, 230, 214, 0.55);
+  transition: all 300ms ease;
+}
+
+.lux-footer-pills span:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(246, 182, 78, 0.2);
+  color: var(--brand-gold, #f6b64e);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────── */
+@media (max-width: 1320px) {
+  .lux-footer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .lux-footer-brand-col {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 1080px) {
+  .lux-footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .lux-footer-brand-col {
+    grid-column: 1 / -1;
+  }
+  .lux-footer .lux-footer-hero {
+    grid-template-columns: 1fr;
+  }
+  .lux-footer-newsletter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .lux-footer-newsletter-form {
+    min-width: 100%;
+  }
+  .lux-footer-brand-col p {
+    max-width: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .lux-footer-inner {
+    padding: 48px 16px 24px;
+  }
+  .lux-footer .lux-footer-copy {
+    max-width: none;
+  }
+  .lux-footer-metrics span {
+    font-size: 11px;
+  }
+  .lux-footer .lux-footer-hero {
+    grid-template-columns: 1fr;
+    border-radius: 24px;
+    gap: 20px;
+    padding: 28px;
+  }
+  .lux-footer .lux-footer-hero h3 {
+    font-size: clamp(28px, 9vw, 40px);
+  }
+  .lux-footer-hero-cta {
+    width: 100%;
+    text-align: center;
+  }
+  .lux-footer-grid {
+    grid-template-columns: 1fr;
+    padding: 24px;
+    gap: 12px;
+  }
+  .lux-footer-newsletter-form {
+    flex-direction: column;
+  }
+  .lux-footer-newsletter {
+    border-radius: 18px;
+    padding: 20px;
+  }
+  .lux-footer-newsletter-form button {
+    width: 100%;
+  }
+  .lux-footer-grid a {
+    line-height: 1.7;
+    width: 100%;
+    padding: 2px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lux-footer-social-btn,
+  .lux-footer-grid a,
+  .lux-footer-hero,
+  .lux-footer-newsletter,
+  .lux-footer-grid {
+    transition: none !important;
+    animation: none !important;
+  }
+}
