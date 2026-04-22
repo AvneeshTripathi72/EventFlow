@@ -30,7 +30,7 @@ const NAV_LINKS = [
   { label: 'Pricing', path: '/pricing' },
   { label: 'Services', path: '/services' },
   { label: 'About Us', path: '/about' },
-  { label: 'Contact', path: '/contact' },
+  { label: 'Contact Us', path: '/contact' },
 ]
 
 function useScrolled(threshold = 8) {
@@ -55,6 +55,7 @@ export default function Nav() {
   const [searchOpen, setSearchOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [contactModalOpen, setContactModalOpen] = useState(false)
+  const [modalType, setModalType] = useState('booking') // 'booking' | 'contact'
   
   const searchRef = useRef(null)
   const scrolled = useScrolled(8)
@@ -95,11 +96,7 @@ export default function Nav() {
         <div className="lux-nav-glow" aria-hidden="true" />
         <div className="lux-nav-inner">
           <Link href="/" className="lux-nav-brand" aria-label="Go to home">
-            <img 
-              src="/assets/magnevents-logo.jpg" 
-              alt="Magnevents" 
-              style={{ height: '40px', width: 'auto', display: 'block', borderRadius: '8px' }} 
-            />
+            <BrandMark size="md" light={false} />
           </Link>
 
           <div className="lux-nav-center" aria-label="Main navigation">
@@ -132,11 +129,12 @@ export default function Nav() {
                 : (
                   <Link 
                     key={link.path} 
-                    href={link.label === 'Contact' ? '#' : link.path} 
-                    className={`lux-nav-link ${link.label === 'Contact' ? 'lux-nav-link-gold' : ''} ${isLinkActive(link.path) ? 'is-active' : ''}`}
+                    href={link.label === 'Contact Us' ? '#' : link.path} 
+                    className={`lux-nav-link ${link.label === 'Contact Us' ? 'lux-nav-link-gold' : ''} ${isLinkActive(link.path) ? 'is-active' : ''}`}
                     onClick={(e) => {
-                      if (link.label === 'Contact') {
+                      if (link.label === 'Contact Us') {
                         e.preventDefault();
+                        setModalType('contact');
                         setContactModalOpen(true);
                       }
                     }}
@@ -156,11 +154,14 @@ export default function Nav() {
             </button>
 
             <button 
-              onClick={() => setContactModalOpen(true)} 
+              onClick={() => {
+                setModalType('booking');
+                setContactModalOpen(true);
+              }} 
               className="lux-nav-chat fx-glow-button"
-              aria-label="Book an artist"
+              aria-label="Share artist details"
             >
-              Artist Booking
+              Artist Details Share
             </button>
 
             <button className={`lux-hamburger ${menuOpen ? 'is-open' : ''}`} onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? 'Close menu' : 'Open menu'}>
@@ -182,11 +183,12 @@ export default function Nav() {
         {NAV_LINKS.map(link => (
           <div key={link.label}>
             <Link 
-              href={link.label === 'Contact' ? '#' : link.path} 
+              href={link.label === 'Contact Us' ? '#' : link.path} 
               className={`lux-mobile-link ${isLinkActive(link.path) ? 'is-active' : ''}`}
               onClick={(e) => {
-                if (link.label === 'Contact') {
+                if (link.label === 'Contact Us') {
                   e.preventDefault();
+                  setModalType('contact');
                   setContactModalOpen(true);
                   setMenuOpen(false);
                 } else if (!link.children) {
@@ -209,13 +211,14 @@ export default function Nav() {
         ))}
         <button 
           onClick={() => {
+            setModalType('booking');
             setContactModalOpen(true);
             setMenuOpen(false);
           }} 
           className="lux-mobile-signup" 
           style={{ marginTop: '20px', width: '100%', textAlign: 'center' }}
         >
-          Artist Booking
+          Artist Details Share
         </button>
       </aside>
 
@@ -257,8 +260,11 @@ export default function Nav() {
         )}
       </AnimatePresence>
 
-      <ContactModal isOpen={contactModalOpen} onClose={() => setContactModalOpen(false)} />
+      <ContactModal 
+        isOpen={contactModalOpen} 
+        onClose={() => setContactModalOpen(false)} 
+        initialType={modalType}
+      />
     </>
   )
 }
-

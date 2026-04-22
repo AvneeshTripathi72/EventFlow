@@ -1,0 +1,204 @@
+.book-page {
+  padding-top: 140px;
+  padding-bottom: 120px;
+  background: #080706;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient Background Blobs */
+.book-page::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(246, 182, 78, 0.08) 0%, transparent 70%);
+  filter: blur(80px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.book-page::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(230, 126, 34, 0.05) 0%, transparent 70%);
+  filter: blur(60px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.book-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.book-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.book-header .accent-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #f6b64e;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding: 6px 16px;
+  background: rgba(246, 182, 78, 0.1);
+  border: 1px solid rgba(246, 182, 78, 0.2);
+  border-radius: 99px;
+}
+
+.book-header h1 {
+  font-family: var(--font-display, serif);
+  font-size: clamp(40px, 8vw, 84px);
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.book-header p {
+  font-size: 20px;
+  color: #8a8f98;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-bottom: 80px;
+}
+
+.book-card {
+  padding: 56px;
+  background: rgba(20, 20, 20, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.book-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(246, 182, 78, 0.05) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(246, 182, 78, 0.2);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+}
+
+.book-card:hover::before {
+  opacity: 1;
+}
+
+.book-card h3 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.book-card p {
+  color: #8a8f98;
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  flex: 1;
+}
+
+.book-main-btn {
+  width: 100%;
+  padding: 20px;
+  border-radius: 18px;
+  background: linear-gradient(90deg, #f6b64e 0%, #e67e22 100%);
+  color: #000;
+  font-weight: 800;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(246, 182, 78, 0.2);
+  transition: all 0.3s ease;
+}
+
+.book-main-btn:hover {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+  box-shadow: 0 15px 40px rgba(246, 182, 78, 0.3);
+}
+
+.book-outline-btn {
+  width: 100%;
+  padding: 18px;
+  border-radius: 18px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.book-outline-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.book-footer {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  padding-top: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-benefit {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #8a8f98;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.benefit-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(246, 182, 78, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .book-grid { grid-template-columns: 1fr; }
+  .book-card { padding: 40px; }
+  .book-footer { flex-direction: column; gap: 20px; align-items: center; }
+}

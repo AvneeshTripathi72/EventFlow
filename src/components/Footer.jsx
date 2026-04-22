@@ -24,7 +24,7 @@ const EXPLORE_LINKS = [
 
 const COMPANY_LINKS = [
   ['About Magnevents', '/about'],
-  ['Contact Team', '/contact'],
+  ['Contact Us', '/contact'],
   ['Become an Artist', '/onboarding'],
   ['Booking Support', '/book'],
 ]
@@ -96,7 +96,7 @@ export default function Footer() {
         <section className="lux-footer-grid reveal-child">
           <div className="lux-footer-brand-col">
             <div className="lux-footer-brand-wrap">
-              <BrandMark size="sm" light={false} />
+              <BrandMark size="sm" light={false} hideText={true} />
               <span className="lux-footer-brand-name">Magnevents</span>
             </div>
             <p>Connecting event hosts with world-class singers, bands, and production teams across India.</p>

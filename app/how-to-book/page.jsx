@@ -1,64 +1,70 @@
 "use client"
-
 import { motion } from 'framer-motion'
-import AppShellWrapper from '@/src/components/AppShellWrapper'
+import { AppShellWrapper } from '@/src/components/AppShellWrapper'
+import './HowToBook.css'
 
 const STEPS = [
-  { num: '01', title: 'Share Your Event', desc: 'Fill out our form or reach out via call/WhatsApp. Tell us about your event date, type, and vibe.', icon: '📱' },
-  { num: '02', title: 'Get Handpicked Options', desc: 'Our experts curate a list of artists that match your specific requirements and budget perfectly.', icon: '🎯' },
-  { num: '03', title: 'Confirm & Book', desc: 'Review the options, choose your favorite artist, and secure your booking with a transparent process.', icon: '✅' },
-  { num: '04', title: 'Relax & Enjoy', desc: 'We handle everything from technical setup to coordination. Just enjoy your unforgettable event!', icon: '🎉' },
+  { 
+    title: "Share Your Event", 
+    desc: "Tell us about your occasion via form, call, or WhatsApp.", 
+    icon: "📝",
+    color: "#00ff41"
+  },
+  { 
+    title: "Get Handpicked Options", 
+    desc: "We curate the best artists matching your vibe and budget.", 
+    icon: "🔍",
+    color: "#ff8da1"
+  },
+  { 
+    title: "Confirm & Book", 
+    desc: "Secure your favorite artist with a simple booking process.", 
+    icon: "✅",
+    color: "#00ff41"
+  },
+  { 
+    title: "Relax & Enjoy", 
+    desc: "We manage the setup and show. You focus on the magic.", 
+    icon: "🎸",
+    color: "#ff8da1"
+  },
 ]
 
 export default function HowToBookPage() {
   return (
     <AppShellWrapper>
-      <section style={{ padding: '120px 24px 60px', background: '#0A0A0A', textAlign: 'center' }}>
-        <motion.span style={{ color: '#00ff7f', fontWeight: 800, letterSpacing: '0.2em' }}>PROCESS</motion.span>
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          style={{ fontSize: 'clamp(40px, 8vw, 72px)', fontWeight: 900, color: '#fff', marginTop: '16px' }}
-        >
-          Your Live Music in <span style={{ color: '#ffb6c1' }}>4 Easy Steps</span>
-        </motion.h1>
-      </section>
+      <main className="lux-page how-to-book-page">
+        <div className="lux-container">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="how-header"
+          >
+            <span className="accent-tag">TIMELINE</span>
+            <h1>How to Book <span className="text-gradient">a Musician</span></h1>
+            <p>Your Live Music in 4 Easy Steps</p>
+          </motion.div>
 
-      <section style={{ padding: '60px 24px', background: '#0A0A0A' }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '40px' }}>
-          {STEPS.map((step, idx) => (
-            <motion.div 
-              key={idx}
-              initial={{ opacity: 0, x: idx % 2 === 0 ? -40 : 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              style={{ 
-                display: 'flex', 
-                gap: '30px', 
-                alignItems: 'center', 
-                padding: '40px', 
-                background: 'rgba(255,255,255,0.02)', 
-                borderRadius: '32px',
-                border: '1px solid rgba(255,255,255,0.05)'
-              }}
-            >
-              <div style={{ fontSize: '60px', fontWeight: 900, color: 'rgba(255,255,255,0.05)', lineHeight: 1 }}>{step.num}</div>
-              <div style={{ fontSize: '40px' }}>{step.icon}</div>
-              <div>
-                <h3 style={{ fontSize: '24px', color: '#fff', marginBottom: '8px' }}>{step.title}</h3>
-                <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '18px', lineHeight: 1.6 }}>{step.desc}</p>
-              </div>
-            </motion.div>
-          ))}
+          <div className="steps-timeline">
+            {STEPS.map((step, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className={`step-item ${idx % 2 === 0 ? 'left' : 'right'}`}
+              >
+                <div className="step-blob" style={{ backgroundColor: step.color }}>{step.icon}</div>
+                <div className="step-content">
+                  <span className="step-num" style={{ color: step.color }}>Step {idx + 1}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+            <div className="timeline-line"></div>
+          </div>
         </div>
-      </section>
-
-      <section style={{ padding: '100px 24px', textAlign: 'center', background: '#000' }}>
-        <h2 style={{ fontSize: '40px', color: '#fff', marginBottom: '30px' }}>Start Step 01 Today</h2>
-        <a href="/contact" className="fx-glow-button" style={{ padding: '18px 40px', borderRadius: '99px', background: '#00ff7f', color: '#000', fontWeight: 800, textDecoration: 'none' }}>
-          Book Your Event
-        </a>
-      </section>
+      </main>
     </AppShellWrapper>
   )
 }

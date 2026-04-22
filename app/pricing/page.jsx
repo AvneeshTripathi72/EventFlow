@@ -54,8 +54,8 @@ export default function PricingPage() {
             animate={{ opacity: 1, y: 0 }}
             className="pricing-title"
           >
-            Curated Soundscapes for <br />
-            <span className="italic-accent">Exceptional Evenings</span>
+            Book Top Singers <br />
+            <span className="italic-accent">Starting At Just ...</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}

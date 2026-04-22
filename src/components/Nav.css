@@ -16,8 +16,8 @@
 }
 
 .lux-nav.is-light {
-  background: linear-gradient(180deg, rgba(253, 250, 241, 0.95) 0%, rgba(245, 240, 228, 0.9) 100%);
-  border-color: rgba(32, 26, 22, 0.12);
+  background: rgba(10, 8, 6, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .lux-nav.is-dark {
@@ -140,8 +140,8 @@
   min-width: 190px;
   border: 1px solid rgba(28, 24, 20, 0.18);
   border-radius: 12px;
-  background: rgba(251, 248, 238, 0.98);
-  box-shadow: 0 16px 32px rgba(17, 13, 10, 0.14);
+  background: rgba(18, 18, 18, 0.98);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
   padding: 8px;
   display: grid;
   gap: 4px;
@@ -153,7 +153,7 @@
 
 .lux-nav-dropdown-link {
   text-decoration: none;
-  color: #4e463b;
+  color: rgba(255, 255, 255, 0.8);
   font-size: 13px;
   font-weight: 600;
   border-radius: 8px;
@@ -162,8 +162,8 @@
 }
 
 .lux-nav-dropdown-link:hover {
-  background: rgba(255, 255, 255, 0.88);
-  color: #1e1913;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
 .lux-nav-dropdown-wrap:hover .lux-nav-dropdown,
@@ -317,24 +317,24 @@
 }
 
 .lux-icon-btn {
-  border: 1px solid rgba(28, 24, 20, 0.16);
-  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   width: 36px;
   height: 36px;
   border-radius: 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #5f574b;
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   cursor: pointer;
   transition: color 160ms ease, border-color 160ms ease, transform 160ms ease, background 160ms ease;
 }
 
 .lux-icon-btn:hover {
-  color: #1d1913;
-  border-color: rgba(28, 24, 20, 0.34);
-  background: rgba(255, 255, 255, 0.95);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
   transform: translateY(-1px);
 }
 
@@ -496,8 +496,8 @@
   width: 220px;
   border: 1px solid rgba(28, 24, 20, 0.18);
   border-radius: 14px;
-  background: rgba(251, 249, 242, 0.98);
-  box-shadow: 0 16px 36px rgba(17, 13, 10, 0.16);
+  background: rgba(20, 20, 20, 0.98);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   animation: luxMenuFade 180ms ease;
 }
@@ -545,7 +545,7 @@
   height: 36px;
   border: 1px solid rgba(28, 24, 20, 0.18);
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.05);
   cursor: pointer;
   align-items: center;
   justify-content: center;
@@ -556,7 +556,7 @@
 .lux-hamburger span {
   width: 16px;
   height: 1.5px;
-  background: #3c3429;
+  background: #fff;
   transition: transform 190ms ease, opacity 190ms ease;
 }
 
@@ -592,8 +592,8 @@
 }
 
 .lux-mobile-panel.is-light {
-  background: rgba(250, 245, 235, 0.96);
-  border-bottom: 1px solid rgba(28, 24, 20, 0.14);
+  background: rgba(10, 10, 10, 0.96);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .lux-mobile-panel.is-dark {
@@ -642,9 +642,9 @@
   text-align: left;
   font-size: 14px;
   font-weight: 600;
-  color: #2d261d;
+  color: rgba(255, 255, 255, 0.9);
   padding: 11px 10px;
-  border-bottom: 1px solid rgba(28, 24, 20, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
 }
 
@@ -728,8 +728,8 @@
   width: min(620px, calc(100% - 26px));
   border-radius: 16px;
   border: 1px solid rgba(28, 24, 20, 0.2);
-  background: rgba(251, 248, 238, 0.98);
-  box-shadow: 0 20px 40px rgba(12, 9, 7, 0.22);
+  background: rgba(20, 20, 20, 0.98);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
   overflow: hidden;
   position: relative;
   z-index: 2;
@@ -753,7 +753,7 @@
   outline: 0;
   background: transparent;
   font-size: 16px;
-  color: #1c1711;
+  color: #fff;
   width: 100%;
 }
 

@@ -1,54 +1,81 @@
 "use client";
-
-import { useReveal } from '@/src/hooks/useReveal'
-import '@/src/styles/pages/ContactPage.css'
+import { motion } from 'framer-motion'
+import { AppShellWrapper } from '@/src/components/AppShellWrapper'
+import './ContactPage.css'
 
 export default function ContactPage() {
-  const heroRef = useReveal(0.1)
-  const formRef = useReveal(0.1)
-
   return (
-    <div className="contact-page">
-      <section ref={heroRef} className="contact-hero">
-        <p className="reveal-child">Contact Magnevents</p>
-        <h1 className="reveal-child">Plan your event with our booking team</h1>
-        <p className="reveal-child">Share your date, city, and event style. We will curate artists and production options within 24 hours.</p>
-      </section>
+    <AppShellWrapper>
+      <main className="lux-page contact-page">
+        <div className="lux-container">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="contact-header"
+          >
+            <span className="accent-tag">CONTACT</span>
+            <h1>Book Your <span className="text-gradient">Event</span></h1>
+            <p>Let’s Bring Your Event to Life</p>
+          </motion.div>
 
-      <section ref={formRef} className="contact-grid-wrap">
-        <div className="contact-grid">
-          <article className="contact-info reveal-child">
-            <h3>Direct channels</h3>
-            <a href="tel:+919876543210">+91 98765 43210</a>
-            <a href="mailto:magneventsdotin@gmail.com">magneventsdotin@gmail.com</a>
-            <p>Mon-Sat: 10:00 AM - 8:00 PM</p>
-            <div className="contact-social-links" style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
-              <a href="https://www.instagram.com/magnevents.in?utm_source=qr&igsh=Y29qa2cxY25rNmtk" target="_blank" rel="noreferrer" style={{ color: 'var(--text-brand)' }}>Instagram</a>
-              <a href="https://youtube.com/@magnevents?si=fIU-2dKaLsG1DAJu" target="_blank" rel="noreferrer" style={{ color: 'var(--text-brand)' }}>YouTube</a>
-            </div>
-            <div style={{ marginTop: '20px' }}>
-              <span>Delhi</span>
-              <span>Mumbai</span>
-              <span>Bengaluru</span>
-            </div>
-          </article>
+          <div className="contact-main-grid">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="contact-details-card"
+            >
+              <h3>Direct Channels</h3>
+              <div className="channel-item">
+                <span>📞</span>
+                <a href="tel:+918076515257">+91 8076515257</a>
+              </div>
+              <div className="channel-item">
+                <span>✉️</span>
+                <a href="mailto:bookmagnevents@gmail.com">bookmagnevents@gmail.com</a>
+              </div>
+              
+              <div className="whatsapp-wrap">
+                <p>Need a quick response?</p>
+                <a href="https://wa.me/918076515257" target="_blank" className="whatsapp-btn">
+                   Chat on WhatsApp
+                </a>
+              </div>
+            </motion.div>
 
-          <form className="contact-form reveal-child">
-            <input type="text" placeholder="Full Name" aria-label="Full Name" />
-            <input type="tel" placeholder="Phone" aria-label="Phone" />
-            <input type="email" placeholder="Email" aria-label="Email" />
-            <input type="text" placeholder="Event City" aria-label="Event City" />
-            <select aria-label="Event type">
-              <option>Wedding</option>
-              <option>Corporate Event</option>
-              <option>Private Party</option>
-              <option>College Fest</option>
-            </select>
-            <textarea rows="5" placeholder="Tell us your event details" aria-label="Event details" />
-            <button type="button">Send inquiry</button>
-          </form>
+            <motion.form 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="booking-form matrix-border"
+            >
+              <div className="form-row">
+                <input type="text" placeholder="Your Name" required />
+              </div>
+              <div className="form-row">
+                <input type="email" placeholder="Your Email" required />
+              </div>
+              <div className="form-row">
+                <input type="tel" placeholder="Phone Number" required />
+              </div>
+              <div className="form-row">
+                <select required>
+                  <option value="" disabled selected>Type of Artist</option>
+                  <option value="solo">Solo Singer</option>
+                  <option value="band">Band</option>
+                  <option value="sufi">Sufi Artist</option>
+                </select>
+              </div>
+              <motion.button 
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                type="submit" 
+                className="submit-btn"
+              >
+                Submit Booking Inquiry
+              </motion.button>
+            </motion.form>
+          </div>
         </div>
-      </section>
-    </div>
+      </main>
+    </AppShellWrapper>
   )
 }

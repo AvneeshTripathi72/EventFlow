@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-export default function BrandMark({ size = 'md', showTag = false, light = false }) {
+export default function BrandMark({ size = 'md', showTag = false, light = false, hideText = false }) {
   const markSizeMap = { sm: 22, md: 28, lg: 36 }
   const titleSizeMap = { sm: '18px', md: '20px', lg: '25px' }
   const markSize = markSizeMap[size] ?? markSizeMap.md
@@ -56,32 +56,34 @@ export default function BrandMark({ size = 'md', showTag = false, light = false 
         </svg>
       </span>
 
-      <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
-        <span
-          style={{
-            fontSize: titleSize,
-            fontWeight: 800,
-            letterSpacing: '-0.04em',
-            color: textColor,
-            textShadow: light ? '0 6px 18px rgba(0,0,0,0.25)' : 'none',
-          }}
-        >
-          Magnevents
-        </span>
-        {showTag && (
+      {!hideText && (
+        <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
           <span
             style={{
-              fontSize: '10px',
-              letterSpacing: '0.09em',
-              textTransform: 'uppercase',
-              color: 'var(--text-tertiary)',
-              marginTop: '3px',
+              fontSize: titleSize,
+              fontWeight: 800,
+              letterSpacing: '-0.04em',
+              color: textColor,
+              textShadow: light ? '0 6px 18px rgba(0,0,0,0.25)' : 'none',
             }}
           >
-            Book bands. Create moments.
+            Magnevents
           </span>
-        )}
-      </span>
+          {showTag && (
+            <span
+              style={{
+                fontSize: '10px',
+                letterSpacing: '0.09em',
+                textTransform: 'uppercase',
+                color: 'var(--text-tertiary)',
+                marginTop: '3px',
+              }}
+            >
+              Book bands. Create moments.
+            </span>
+          )}
+        </span>
+      )}
     </span>
   )
 }

@@ -1,29 +1,32 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import './ContactModal.css'
 
-export default function ContactModal({ isOpen, onClose }) {
-  const [activeTab, setActiveTab] = useState('user') // 'user' or 'artist'
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
-
-  const [userForm, setUserForm] = useState({
+export default function ContactModal({ isOpen, onClose, initialType = 'booking' }) {
+  const [formType, setFormType] = useState(initialType) // 'booking' | 'contact'
+  
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    eventDate: '',
+    artistType: '',
+    eventType: '',
+    date: '',
     message: ''
   })
+  
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
 
-  const [artistForm, setArtistForm] = useState({
-    talentName: '',
-    category: 'Singer',
-    experience: '',
-    portfolio: '',
-    phone: ''
-  })
+  // Sync with initialType when modal opens
+  useEffect(() => {
+    if (isOpen) {
+      setFormType(initialType)
+      setSubmitted(false)
+    }
+  }, [isOpen, initialType])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -35,12 +38,10 @@ export default function ContactModal({ isOpen, onClose }) {
     setIsSubmitting(false)
     setSubmitted(true)
     
+    // Auto close after success
     setTimeout(() => {
       onClose()
-      setSubmitted(false)
-      setActiveTab('user')
-      setUserForm({ name: '', email: '', phone: '', eventDate: '', message: '' })
-      setArtistForm({ talentName: '', category: 'Singer', experience: '', portfolio: '', phone: '' })
+      setFormData({ name: '', email: '', phone: '', artistType: '', eventType: '', date: '', message: '' })
     }, 2500)
   }
 
@@ -62,141 +63,126 @@ export default function ContactModal({ isOpen, onClose }) {
           initial={{ opacity: 0, scale: 0.95, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 30 }}
+          transition={{ type: "spring", damping: 30, stiffness: 400 }}
         >
-          <button className="lux-modal-close" onClick={onClose} aria-label="Close modal">✕</button>
+          <div className="modal-glow-bg" />
+          
+          <button className="lux-modal-close" onClick={onClose} aria-label="Close modal">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
 
           <div className="lux-modal-header">
-            <h3>{activeTab === 'user' ? 'Book an Artist' : 'Join Our Roster'}</h3>
-            <p>{activeTab === 'user' ? 'Fill your details to contact our vendor team' : 'Send your details to showcase your talent'}</p>
+            <div className="header-badge">{formType === 'booking' ? 'ELEVATE YOUR EVENT' : 'DIRECT SUPPORT'}</div>
+            <h3>{formType === 'booking' ? 'Reserve Your Artist' : 'Get in Touch'}</h3>
+            <p>{formType === 'booking' ? 'Tell us your vision, and we will find the perfect stage presence for you.' : 'Our team is here to help you with any inquiries or custom requests.'}</p>
           </div>
 
-          {!submitted && (
-            <div className="lux-modal-tabs">
-              <button 
-                className={`lux-tab-btn ${activeTab === 'user' ? 'is-active' : ''}`}
-                onClick={() => setActiveTab('user')}
-              >
-                User Form
-              </button>
-              <button 
-                className={`lux-tab-btn ${activeTab === 'artist' ? 'is-active' : ''}`}
-                onClick={() => setActiveTab('artist')}
-              >
-                Artist Form
-              </button>
-            </div>
-          )}
+          <div className="form-type-switcher">
+            <button 
+              className={formType === 'booking' ? 'active' : ''} 
+              onClick={() => setFormType('booking')}
+            >
+              Artist Booking
+            </button>
+            <button 
+              className={formType === 'contact' ? 'active' : ''} 
+              onClick={() => setFormType('contact')}
+            >
+              General Inquiry
+            </button>
+            <div className={`switcher-bg ${formType}`} />
+          </div>
 
           {submitted ? (
-            <div className="lux-modal-success">
-              <div className="lux-success-icon">✓</div>
-              <h4>Application Sent!</h4>
-              <p>We have received your details and will get back to you shortly.</p>
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="lux-modal-success"
+            >
+              <div className="lux-success-ring">
+                 <div className="lux-success-check">✓</div>
+              </div>
+              <h4>Submission Received!</h4>
+              <p>Your details have been securely sent. A booking concierge will reach out to you within 24 hours.</p>
+            </motion.div>
           ) : (
             <form className="lux-modal-form" onSubmit={handleSubmit}>
-              {activeTab === 'user' ? (
-                <>
-                  <div className="lux-form-group">
-                    <label>Your Name</label>
-                    <input 
-                      type="text" required placeholder="Full Name"
-                      value={userForm.name}
-                      onChange={e => setUserForm({...userForm, name: e.target.value})}
-                    />
-                  </div>
+              <div className="lux-form-row">
+                <div className="lux-form-group">
+                  <label>Full Name</label>
+                  <input 
+                    type="text" required placeholder="John Doe"
+                    value={formData.name}
+                    onChange={e => setFormData({...formData, name: e.target.value})}
+                  />
+                </div>
+                <div className="lux-form-group">
+                  <label>Phone Number</label>
+                  <input 
+                    type="tel" required placeholder="+91"
+                    value={formData.phone}
+                    onChange={e => setFormData({...formData, phone: e.target.value})}
+                  />
+                </div>
+              </div>
+
+              <div className="lux-form-group">
+                <label>Email Address</label>
+                <input 
+                  type="email" required placeholder="name@email.com"
+                  value={formData.email}
+                  onChange={e => setFormData({...formData, email: e.target.value})}
+                />
+              </div>
+
+              {formType === 'booking' && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  className="booking-fields-wrap"
+                >
                   <div className="lux-form-row">
                     <div className="lux-form-group">
-                      <label>Email</label>
-                      <input 
-                        type="email" required placeholder="email@example.com"
-                        value={userForm.email}
-                        onChange={e => setUserForm({...userForm, email: e.target.value})}
-                      />
-                    </div>
-                    <div className="lux-form-group">
-                      <label>Phone</label>
-                      <input 
-                        type="tel" required placeholder="+91"
-                        value={userForm.phone}
-                        onChange={e => setUserForm({...userForm, phone: e.target.value})}
-                      />
-                    </div>
-                  </div>
-                  <div className="lux-form-group">
-                    <label>Event Date</label>
-                    <input 
-                      type="date" required
-                      value={userForm.eventDate}
-                      onChange={e => setUserForm({...userForm, eventDate: e.target.value})}
-                    />
-                  </div>
-                  <div className="lux-form-group">
-                    <label>Special Requests</label>
-                    <textarea 
-                      rows="3" placeholder="Tell us about your event requirement..."
-                      value={userForm.message}
-                      onChange={e => setUserForm({...userForm, message: e.target.value})}
-                    />
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="lux-form-group">
-                    <label>Artist / Band Name</label>
-                    <input 
-                      type="text" required placeholder="Your Stage Name"
-                      value={artistForm.talentName}
-                      onChange={e => setArtistForm({...artistForm, talentName: e.target.value})}
-                    />
-                  </div>
-                  <div className="lux-form-row">
-                    <div className="lux-form-group">
-                      <label>Category</label>
+                      <label>Artist Category</label>
                       <select 
-                        value={artistForm.category}
-                        onChange={e => setArtistForm({...artistForm, category: e.target.value})}
-                        className="lux-select"
+                        required
+                        value={formData.artistType}
+                        onChange={e => setFormData({...formData, artistType: e.target.value})}
                       >
-                        <option>Singer</option>
-                        <option>Music Band</option>
-                        <option>DJ</option>
-                        <option>Dancer</option>
-                        <option>Comedian</option>
+                        <option value="" disabled>Select Type</option>
+                        <option value="singer">Singer</option>
+                        <option value="band">Live Band</option>
+                        <option value="dj">DJ</option>
+                        <option value="sufi">Sufi Artist</option>
+                        <option value="other">Other</option>
                       </select>
                     </div>
                     <div className="lux-form-group">
-                      <label>Experience (Years)</label>
+                      <label>Event Date</label>
                       <input 
-                        type="number" required placeholder="e.g. 5"
-                        value={artistForm.experience}
-                        onChange={e => setArtistForm({...artistForm, experience: e.target.value})}
+                        type="date" required
+                        value={formData.date}
+                        onChange={e => setFormData({...formData, date: e.target.value})}
                       />
                     </div>
                   </div>
-                  <div className="lux-form-group">
-                    <label>Portfolio / Social Link</label>
-                    <input 
-                      type="url" required placeholder="Instagram/YouTube Link"
-                      value={artistForm.portfolio}
-                      onChange={e => setArtistForm({...artistForm, portfolio: e.target.value})}
-                    />
-                  </div>
-                  <div className="lux-form-group">
-                    <label>WhatsApp Number</label>
-                    <input 
-                      type="tel" required placeholder="+91"
-                      value={artistForm.phone}
-                      onChange={e => setArtistForm({...artistForm, phone: e.target.value})}
-                    />
-                  </div>
-                </>
+                </motion.div>
               )}
 
+              <div className="lux-form-group">
+                <label>{formType === 'booking' ? 'Event Details' : 'Message'}</label>
+                <textarea 
+                  rows="3" required 
+                  placeholder={formType === 'booking' ? "Tell us about the venue, audience, and your specific requirements..." : "How can we help you?"}
+                  value={formData.message}
+                  onChange={e => setFormData({...formData, message: e.target.value})}
+                ></textarea>
+              </div>
+
               <div className="lux-modal-footer">
-                <button type="button" className="btn-cancel" onClick={onClose}>Cancel</button>
-                <button type="submit" className="btn-submit fx-glow-button" disabled={isSubmitting}>
-                  {isSubmitting ? 'Processing...' : 'Submit Application'}
+                <button type="submit" className="btn-submit-premium" disabled={isSubmitting}>
+                  <span className="btn-text">{isSubmitting ? 'Processing...' : (formType === 'booking' ? 'Request Booking' : 'Send Message')}</span>
+                  <div className="btn-glow" />
                 </button>
               </div>
             </form>

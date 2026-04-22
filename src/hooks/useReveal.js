@@ -7,7 +7,7 @@ export function useReveal(delay = 0) {
 
   useEffect(() => {
     if (isInView && ref.current) {
-      ref.current.classList.add('is-revealed')
+      ref.current.classList.add('visible')
     }
   }, [isInView])
 
