@@ -15,7 +15,7 @@ function ContactIcon({ color }) {
 }
 
 function Tab({ path, icon, label, onNavigate, isActive }) {
-  const iconColor = isActive ? '#91531a' : '#6b5640'
+  const iconColor = isActive ? '#f6b64e' : '#8a8f98'
 
   return (
     <button
@@ -29,17 +29,17 @@ function Tab({ path, icon, label, onNavigate, isActive }) {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: '3px',
-        color: isActive ? '#91531a' : '#6b5640',
-        padding: '8px 4px 4px',
+        gap: '4px',
+        color: isActive ? '#f6b64e' : '#8a8f98',
+        padding: '10px 4px 6px',
         cursor: 'pointer',
         WebkitTapHighlightColor: 'transparent',
-        transition: 'transform 150ms ease, color 150ms ease, opacity 150ms ease',
-        opacity: 1,
+        transition: 'all 200ms ease',
+        opacity: isActive ? 1 : 0.7,
       }}
     >
       {icon(iconColor)}
-      <span className="booking-tab-label" style={{ fontSize: '10px', fontWeight: isActive ? 700 : 600, letterSpacing: '0.01em' }}>{label}</span>
+      <span className="booking-tab-label" style={{ fontSize: '10px', fontWeight: isActive ? 700 : 500, letterSpacing: '0.04em', textTransform: 'uppercase' }}>{label}</span>
     </button>
   )
 }
@@ -56,18 +56,19 @@ export default function BottomNav() {
     <>
       <div className="booking-bottom-nav" style={{
         position: 'fixed',
-        left: 0,
-        right: 0,
-        bottom: 0,
+        left: '12px',
+        right: '12px',
+        bottom: '12px',
         zIndex: 170,
-        height: 'calc(62px + env(safe-area-inset-bottom))',
-        paddingBottom: 'env(safe-area-inset-bottom)',
-        borderTop: '1px solid rgba(24, 20, 16, 0.22)',
-        background: 'linear-gradient(180deg, rgba(248, 242, 231, 0.98) 0%, rgba(241, 233, 217, 0.98) 100%)',
-        boxShadow: '0 -8px 22px rgba(31, 23, 15, 0.08)',
-        backdropFilter: 'blur(18px) saturate(120%)',
-        WebkitBackdropFilter: 'blur(18px) saturate(120%)',
+        height: '68px',
+        borderRadius: '24px',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        background: 'rgba(18, 18, 18, 0.85)',
+        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.6)',
+        backdropFilter: 'blur(24px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(24px) saturate(180%)',
         display: 'flex',
+        padding: '0 8px',
       }}>
         <Tab path="/" icon={(color) => <HomeIcon color={color} />} label="Home" onNavigate={(p) => router.push(p)} isActive={active('/')} />
         <Tab path="/services" icon={(color) => <ServicesIcon color={color} />} label="Services" onNavigate={(p) => router.push(p)} isActive={active('/services')} />
@@ -79,12 +80,13 @@ export default function BottomNav() {
 
       <style>{`
         .booking-bottom-nav .booking-tab-btn {
-          color: #6b5640 !important;
-          opacity: 1 !important;
+          color: #8a8f98 !important;
+          opacity: 0.7 !important;
         }
 
         .booking-bottom-nav .booking-tab-btn.is-active {
-          color: #91531a !important;
+          color: #f6b64e !important;
+          opacity: 1 !important;
         }
 
         .booking-bottom-nav .booking-tab-btn .booking-tab-label {
