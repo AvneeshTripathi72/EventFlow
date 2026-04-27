@@ -1,0 +1,77 @@
+"use client";
+
+import { useState } from 'react'
+import Link from 'next/link'
+import { motion, AnimatePresence } from 'framer-motion'
+import FadeSection from '@/app/components/common/FadeSection'
+import { ARTIST_CATEGORIES } from '@/app/constants'
+
+export default function CategoriesSection() {
+  const [catPage, setCatPage] = useState(0)
+  const catPerPage = 4
+  const totalCatPages = Math.ceil(ARTIST_CATEGORIES.length / catPerPage)
+  const moveCat = (dir) => setCatPage(p => (p + dir + totalCatPages) % totalCatPages)
+
+  return (
+    <FadeSection className="hp-shell hp-block">
+      <div className="hp-cat-section">
+        <div className="hp-cat-header">
+          <h2 className="hp-cat-title">Artist Categories</h2>
+          <p className="hp-cat-desc">
+            Bring your events to the next level with the best artists — book top musicians, live singers, DJs, 
+            stand up comedians, motivational speakers, emcees and more. Seamless booking for an 
+            unforgettable event with Magnevents.
+          </p>
+        </div>
+
+        <div className="hp-cat-carousel-wrap">
+          <button className="hp-cat-arrow hp-cat-arrow--left" onClick={() => moveCat(-1)} aria-label="Previous categories">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+
+          <div className="hp-cat-carousel">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={catPage}
+                className="hp-cat-grid"
+                initial={{ opacity: 0, x: 60 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -60 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {ARTIST_CATEGORIES.slice(catPage * catPerPage, catPage * catPerPage + catPerPage).map((cat, i) => (
+                  <Link key={cat.label} href={`/artists?category=${cat.query}`} className="hp-cat-card">
+                    <motion.div
+                      className="hp-cat-img-wrap"
+                      initial={{ opacity: 0, scale: 0.85 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: i * 0.08, duration: 0.4 }}
+                    >
+                      <img src={cat.image} alt={cat.label} loading="lazy" />
+                    </motion.div>
+                    <span className="hp-cat-label">{cat.label.toUpperCase()}</span>
+                  </Link>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <button className="hp-cat-arrow hp-cat-arrow--right" onClick={() => moveCat(1)} aria-label="Next categories">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+
+        <div className="hp-cat-dots">
+          {Array.from({ length: totalCatPages }).map((_, i) => (
+            <button
+              key={i}
+              className={`hp-cat-dot ${catPage === i ? 'is-active' : ''}`}
+              onClick={() => setCatPage(i)}
+              aria-label={`Go to page ${i + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    </FadeSection>
+  )
+}

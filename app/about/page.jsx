@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { AppShellWrapper } from '@/src/components/AppShellWrapper'
-import './AboutPage.css'
+import { AppShellWrapper } from '@/app/layouts/AppShellWrapper'
+import '@/app/styles/pages/AboutPage.css'
 
 export default function AboutPage() {
   return (
@@ -82,3 +82,4 @@ function ValueCard({ title, desc }) {
     </motion.div>
   )
 }
+

@@ -1,17 +1,14 @@
-import '@/src/styles/tokens.css';
-import '@/src/styles/flow-unify.css';
-import '@/src/index.css';
+import '@/app/styles/tokens.css';
+import '@/app/styles/flow-unify.css';
+import '@/app/index.css';
 import '@fontsource/inter/300.css';
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
 import '@fontsource/inter/600.css';
 import '@fontsource/inter/700.css';
 
-import { Providers } from '@/src/components/Providers';
-import Nav from '@/src/components/Nav';
-import Footer from '@/src/components/Footer';
-import BottomNav from '@/src/components/BottomNav';
-import { AppShellWrapper } from '@/src/components/AppShellWrapper';
+import { Providers } from '@/app/layouts/Providers';
+import { AppShellWrapper } from '@/app/layouts/AppShellWrapper';
 
 export const metadata = {
   title: 'Magnevents — Premium Live Artist Booking',
@@ -33,3 +30,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+

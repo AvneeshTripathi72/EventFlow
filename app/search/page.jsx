@@ -2,27 +2,46 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { AppShellWrapper } from '@/src/components/AppShellWrapper'
-import './SearchPage.css'
+import { AppShellWrapper } from '@/app/layouts/AppShellWrapper'
+import SearchResultItem from '@/app/components/search/SearchResultItem'
+import { searchService } from '@/app/services/searchService'
+import { TRENDING_SEARCHES } from '@/app/constants'
+import '@/app/styles/pages/SearchPage.css'
 
+/**
+ * SearchPage Component
+ * 
+ * Provides a dedicated search interface for the platform.
+ * Refactored to use searchService for logic extraction.
+ */
 export default function SearchPage() {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
   const [isSearching, setIsSearching] = useState(false)
 
-  const handleSearch = (e) => {
-    e.preventDefault()
+  const handleSearch = async (e) => {
+    if (e) e.preventDefault()
     if (!query) return
     setIsSearching(true)
-    // Simulate API call
-    setTimeout(() => {
-      setResults([
-        { id: 1, name: 'Sufi Ensemble', type: 'Band', price: '??? 1.2L+' },
-        { id: 2, name: 'Acoustic Soul', type: 'Singer', price: '??? 45k+' },
-        { id: 3, name: 'Elite Beats', type: 'DJ', price: '??? 80k+' },
-      ])
+    
+    try {
+      const searchResults = await searchService.searchArtists(query)
+      setResults(searchResults)
+    } catch (error) {
+      console.error("Search error:", error)
+    } finally {
       setIsSearching(false)
-    }, 800)
+    }
+  }
+
+  const handleTrendingClick = (tag) => {
+    setQuery(tag)
+    // Trigger immediate search
+    setIsSearching(true)
+    searchService.searchArtists(tag).then(res => {
+      setResults(res)
+      setIsSearching(false)
+    })
   }
 
   return (
@@ -42,7 +61,7 @@ export default function SearchPage() {
               onChange={(e) => setQuery(e.target.value)}
               autoFocus
             />
-            <button type="submit" className="fx-glow-button">
+            <button type="submit" className="fx-glow-button" disabled={isSearching}>
               {isSearching ? 'Searching...' : 'Find Talent'}
             </button>
           </form>
@@ -52,22 +71,11 @@ export default function SearchPage() {
               {results.length > 0 ? (
                 <div className="results-grid">
                   {results.map((res, idx) => (
-                    <motion.div 
-                      key={res.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: idx * 0.1 }}
-                      className="result-item fx-soft-card"
-                    >
-                      <div className="result-main">
-                        <h3>{res.name}</h3>
-                        <span className="result-type">{res.type}</span>
-                      </div>
-                      <div className="result-meta">
-                        <span className="result-price">{res.price}</span>
-                        <button className="result-view-btn">View Profile</button>
-                      </div>
-                    </motion.div>
+                    <SearchResultItem 
+                      key={res.id} 
+                      result={res} 
+                      index={idx} 
+                    />
                   ))}
                 </div>
               ) : query && !isSearching ? (
@@ -85,8 +93,10 @@ export default function SearchPage() {
           <div className="search-trending">
             <h5>Trending Searches</h5>
             <div className="trending-tags">
-              {['Sufi Singers', 'Live Wedding Bands', 'Corporate DJs', 'Violinists', 'Jazz Ensembles'].map(tag => (
-                <button key={tag} onClick={() => { setQuery(tag); }}>{tag}</button>
+              {TRENDING_SEARCHES.map(tag => (
+                <button key={tag} onClick={() => handleTrendingClick(tag)}>
+                  {tag}
+                </button>
               ))}
             </div>
           </div>

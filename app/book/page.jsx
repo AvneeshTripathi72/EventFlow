@@ -1,9 +1,17 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { AppShellWrapper } from '@/src/components/AppShellWrapper'
-import './Book.css'
+import { AppShellWrapper } from '@/app/layouts/AppShellWrapper'
+import ReservationCard from '@/app/components/forms/ReservationCard'
+import BenefitItem from '@/app/components/common/BenefitItem'
+import '@/app/styles/pages/Book.css'
 
+/**
+ * BookPage Component
+ * 
+ * Main reservation page with priority booking options.
+ * Refactored into modular components for scalability.
+ */
 export default function BookPage() {
   const handleOpenModal = () => {
     const event = new CustomEvent('open-contact-modal', { detail: { type: 'booking' } })
@@ -40,31 +48,22 @@ export default function BookPage() {
           </header>
 
           <div className="book-grid">
-            <motion.div 
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="book-card"
-            >
-              <h3>Direct Booking</h3>
-              <p>Ready to confirm? Fill out our priority booking form for a 2-hour response time from our curation team.</p>
-              <button className="book-main-btn" onClick={handleOpenModal}>
-                Start Priority Form
-              </button>
-            </motion.div>
+            <ReservationCard 
+              title="Direct Booking"
+              desc="Ready to confirm? Fill out our priority booking form for a 2-hour response time from our curation team."
+              actionLabel="Start Priority Form"
+              onAction={handleOpenModal}
+              direction="left"
+            />
             
-            <motion.div 
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="book-card"
-            >
-              <h3>Concierge Call</h3>
-              <p>Prefer to speak with an expert? Schedule a 15-minute consultation with our world-class event specialists.</p>
-              <a href="tel:+918076515257" className="book-outline-btn">
-                Call +91 80765 15257
-              </a>
-            </motion.div>
+            <ReservationCard 
+              title="Concierge Call"
+              desc="Prefer to speak with an expert? Schedule a 15-minute consultation with our world-class event specialists."
+              actionLabel="Call +91 80765 15257"
+              isExternal
+              href="tel:+918076515257"
+              direction="right"
+            />
           </div>
 
           <motion.div 
@@ -73,24 +72,9 @@ export default function BookPage() {
             viewport={{ once: true }}
             className="book-footer"
           >
-            <div className="footer-benefit">
-              <div className="benefit-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f6b64e" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <span>Verified Elite Artists</span>
-            </div>
-            <div className="footer-benefit">
-              <div className="benefit-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f6b64e" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <span>Secure Transactions</span>
-            </div>
-            <div className="footer-benefit">
-              <div className="benefit-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f6b64e" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <span>24/7 Priority Support</span>
-            </div>
+            <BenefitItem label="Verified Elite Artists" />
+            <BenefitItem label="Secure Transactions" />
+            <BenefitItem label="24/7 Priority Support" />
           </motion.div>
 
         </div>
@@ -98,3 +82,4 @@ export default function BookPage() {
     </AppShellWrapper>
   )
 }
+

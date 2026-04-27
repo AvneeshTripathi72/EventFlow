@@ -1,15 +1,17 @@
 "use client"
+
 import { motion } from 'framer-motion'
-import { AppShellWrapper } from '@/src/components/AppShellWrapper'
-import './Testimonials.css'
+import { AppShellWrapper } from '@/app/layouts/AppShellWrapper'
+import TestimonialCard from '@/app/components/testimonials/TestimonialCard'
+import { TESTIMONIALS } from '@/app/constants'
+import '@/app/styles/pages/Testimonials.css'
 
-const REVIEWS = [
-  { name: "Akansha", city: "Delhi", text: "Very good singer for our house party, interactive and professional.", stars: 5 },
-  { name: "Sakshi & Rohan", city: "Delhi", text: "Perfect wedding vibe, amazing artist, very professional.", stars: 5 },
-  { name: "Jaswinder Kaur", city: "Corporate", text: "Smooth booking, excellent band, zero stress.", stars: 5 },
-  { name: "Mahagun", city: "Noida", text: "Soulful Sufi night, great coordination and sound.", stars: 5 },
-]
-
+/**
+ * TestimonialsPage Component
+ * 
+ * Displays a grid of client reviews.
+ * Refactored into modular components and centralized data.
+ */
 export default function TestimonialsPage() {
   return (
     <AppShellWrapper>
@@ -26,25 +28,12 @@ export default function TestimonialsPage() {
           </motion.div>
 
           <div className="testi-grid">
-            {REVIEWS.map((review, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: idx * 0.1 }}
-                className="testi-card"
-              >
-                <div className="stars">
-                  {"★".repeat(review.stars)}
-                </div>
-                <p className="testi-text">"{review.text}"</p>
-                <div className="testi-user">
-                  <div className="user-info">
-                    <strong>{review.name}</strong>
-                    <span>{review.city}</span>
-                  </div>
-                </div>
-              </motion.div>
+            {TESTIMONIALS.map((review, idx) => (
+              <TestimonialCard 
+                key={idx} 
+                review={review} 
+                index={idx} 
+              />
             ))}
           </div>
         </div>

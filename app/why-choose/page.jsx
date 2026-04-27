@@ -1,8 +1,17 @@
 "use client"
-import { motion } from 'framer-motion'
-import { AppShellWrapper } from '@/src/components/AppShellWrapper'
-import './WhyChoose.css'
 
+import { motion } from 'framer-motion'
+import { AppShellWrapper } from '@/app/layouts/AppShellWrapper'
+import FeatureCard from '@/app/components/common/FeatureCard'
+import { WHY_CHOOSE_FEATURES } from '@/app/constants'
+import '@/app/styles/pages/WhyChoose.css'
+
+/**
+ * WhyChoosePage Component
+ * 
+ * Highlights the platform's unique selling points.
+ * Refactored into modular components and centralized data.
+ */
 export default function WhyChoosePage() {
   return (
     <AppShellWrapper>
@@ -19,47 +28,16 @@ export default function WhyChoosePage() {
           </motion.div>
 
           <div className="why-choose-grid">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="why-card matrix-border"
-            >
-              <div className="card-icon">✨</div>
-              <h3>Handpicked for You</h3>
-              <p>
-                We don't just provide artists; we curate experiences. Magnevents provides carefully selected singers, 
-                bands, and musicians based on your event style, audience, and budget.
-              </p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="why-card pink-border"
-            >
-              <div className="card-icon">📅</div>
-              <h3>Hassle-Free Booking</h3>
-              <p>
-                From initial inquiry to the final performance, we handle everything. Mention services like hiring 
-                singers for house parties, Sufi singers in Delhi, or wedding bands—we make it simple.
-              </p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="why-card matrix-border"
-            >
-              <div className="card-icon">🔊</div>
-              <h3>Complete Entertainment Setup</h3>
-              <p>
-                Zero stress for you. We provide end-to-end management, including professional sound setups, 
-                stage coordination, and technical support to ensure a flawless show.
-              </p>
-            </motion.div>
+            {WHY_CHOOSE_FEATURES.map((feature, idx) => (
+              <FeatureCard 
+                key={idx}
+                icon={feature.icon}
+                title={feature.title}
+                desc={feature.desc}
+                accent={feature.accent}
+                index={idx}
+              />
+            ))}
           </div>
 
           <motion.section 

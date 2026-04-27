@@ -1,17 +1,10 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { AppShellWrapper } from '@/src/components/AppShellWrapper'
-import './Gallery.css'
+import { AppShellWrapper } from '@/app/layouts/AppShellWrapper'
+import '@/app/styles/pages/Gallery.css'
+import { GALLERY_ITEMS } from '@/app/constants'
 
-const GALLERY_ITEMS = [
-  { id: 1, img: '/assets/lux-hero-artist.jpg', title: 'Grand Finale Gurgaon', size: 'large' },
-  { id: 2, img: '/assets/lux-wedding-celebration.jpg', title: 'Palace Wedding Jaipur', size: 'small' },
-  { id: 3, img: '/assets/lux-live-band-concert.jpg', title: 'Corporate Gala Delhi', size: 'small' },
-  { id: 4, img: '/assets/lux-singer-session.webp', title: 'Intimate Soiree Noida', size: 'medium' },
-  { id: 5, img: '/assets/male-singer-acoustic.jpg', title: 'Acoustic Night', size: 'medium' },
-  { id: 6, img: '/assets/wedding-anchor-stage.jpg', title: 'Star Anchor Session', size: 'large' }
-]
 
 export default function GalleryPage() {
   return (
@@ -48,3 +41,4 @@ export default function GalleryPage() {
     </AppShellWrapper>
   )
 }
+

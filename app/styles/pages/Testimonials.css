@@ -1,5 +1,5 @@
 .testimonials-page {
-  padding: 120px 0;
+  padding: 60px 0;
   background: #0a0c10;
   color: #fff;
 }
@@ -51,7 +51,7 @@
   line-height: 1.6;
   color: #e0e0e0;
   margin-bottom: 24px;
-  font-style: italic;
+  font-style: normal;
 }
 
 .testi-user {

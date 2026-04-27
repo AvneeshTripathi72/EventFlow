@@ -1,7 +1,7 @@
 "use client";
 import { motion } from 'framer-motion'
-import { AppShellWrapper } from '@/src/components/AppShellWrapper'
-import './ContactPage.css'
+import { AppShellWrapper } from '@/app/layouts/AppShellWrapper'
+import '@/app/styles/pages/ContactPage.css'
 
 export default function ContactPage() {
   return (
@@ -79,3 +79,4 @@ export default function ContactPage() {
     </AppShellWrapper>
   )
 }
+

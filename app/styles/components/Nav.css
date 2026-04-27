@@ -1,0 +1,227 @@
+/* Magnevents Premium Navigation */
+
+.lux-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  padding: 0 5%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  transition: height 300ms ease, background 300ms ease;
+  background: rgba(8, 7, 6, 0.85);
+}
+
+.lux-nav.is-scrolled {
+  height: 64px;
+  background: rgba(8, 7, 6, 0.95);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.lux-nav-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brand-gold), transparent);
+  opacity: 0.3;
+}
+
+.lux-nav-inner {
+  width: 100%;
+  max-width: var(--container-2xl);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lux-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 2;
+}
+
+.lux-nav-center {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.lux-nav-link {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 200ms ease;
+  position: relative;
+  font-style: normal;
+}
+
+.lux-nav-link:hover,
+.lux-nav-link.is-active {
+  color: var(--brand-gold);
+}
+
+.lux-nav-link.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--brand-gold);
+  border-radius: 2px;
+}
+
+.lux-nav-link-gold {
+  color: var(--brand-gold) !important;
+  font-weight: 600;
+}
+
+.lux-nav-dropdown-wrap {
+  position: relative;
+}
+
+.lux-nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--bg-overlay);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 12px;
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 200ms ease;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lux-nav-dropdown-wrap:hover .lux-nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.lux-nav-dropdown-link {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  transition: all 200ms ease;
+}
+
+.lux-nav-dropdown-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.lux-mega-menu {
+  position: fixed;
+  top: 72px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  width: 90vw;
+  max-width: 1200px;
+  background: var(--bg-overlay);
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
+  padding: 32px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 300ms var(--ease-out);
+  box-shadow: var(--shadow-lg);
+}
+
+.lux-nav-dropdown-wrap.is-mega:hover .lux-mega-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.lux-dropdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.lux-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 2;
+}
+
+.lux-icon-btn {
+  color: var(--text-secondary);
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 200ms ease;
+}
+
+.lux-icon-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.lux-nav-chat {
+  background: var(--brand-gold);
+  color: var(--text-inverse);
+  padding: 10px 24px;
+  border-radius: 99px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 200ms ease;
+}
+
+.lux-nav-chat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(246, 182, 78, 0.3);
+}
+
+.lux-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+}
+
+@media (max-width: 1024px) {
+  .lux-nav-center {
+    display: none;
+  }
+  .lux-hamburger {
+    display: flex;
+  }
+  .lux-nav-chat {
+    display: none;
+  }
+}
+
+/* Mobile Panel Improvements */
+.lux-mobile-panel {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-base);
+  z-index: 1100;
+  padding: 80px 24px;
+  transform: translateX(100%);
+  transition: transform 300ms var(--ease-out);
+}
+
+.lux-mobile-panel.open {
+  transform: translateX(0);
+}
