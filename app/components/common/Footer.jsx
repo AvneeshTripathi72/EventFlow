@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import BrandMark from '@/app/components/common/BrandMark';
-import '@/app/styles/components/footer.css';
+import '@/app/styles/components/Footer.css';
 
 /**
  * Footer Component
