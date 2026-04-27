@@ -45,16 +45,26 @@ export default function MobilePanel({ isOpen, onClose, isLight, pathname, onOpen
             )}
           </div>
         ))}
-        <button 
-          onClick={() => {
-            onOpenContactModal('booking');
-            onClose();
-          }} 
-          className="lux-mobile-signup" 
-          style={{ marginTop: '20px', width: '100%', textAlign: 'center' }}
-        >
-          Artist Details Share
-        </button>
+        <div className="lux-mobile-actions" style={{ marginTop: '32px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <button 
+            onClick={() => {
+              onOpenContactModal('contact');
+              onClose();
+            }} 
+            className="lux-mobile-cta secondary"
+          >
+            Contact Us
+          </button>
+          <button 
+            onClick={() => {
+              onOpenContactModal('booking');
+              onClose();
+            }} 
+            className="lux-mobile-cta"
+          >
+            Artist Registration
+          </button>
+        </div>
       </aside>
       {isOpen && <button type="button" className="lux-mobile-backdrop" aria-label="Close menu" onClick={onClose} />}
     </>

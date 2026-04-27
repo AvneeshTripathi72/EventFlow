@@ -1,6 +1,6 @@
 .testimonials-page {
   padding: 60px 0;
-  background: #0a0c10;
+  background: var(--bg-base);
   color: #fff;
 }
 

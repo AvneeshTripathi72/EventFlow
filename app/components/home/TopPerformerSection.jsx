@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import FadeSection from '@/app/components/common/FadeSection'
 import Stars from '@/app/components/common/Stars'
@@ -12,7 +13,13 @@ export default function TopPerformerSection() {
       </div>
       <div className="hp-aom-card">
         <div className="hp-aom-img-wrap">
-          <img src={ARTIST_OF_MONTH.image} alt={ARTIST_OF_MONTH.name} />
+          <Image 
+            src={ARTIST_OF_MONTH.image} 
+            alt={ARTIST_OF_MONTH.name} 
+            width={400} 
+            height={400} 
+            style={{ objectFit: 'cover' }}
+          />
           <div className="hp-aom-badge">
             <span className="hp-aom-badge-icon">🏆</span>
             Artist of the Month

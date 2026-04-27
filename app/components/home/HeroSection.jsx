@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import AnimatedCounter from '@/app/components/common/AnimatedCounter'
 import { HERO_STATS, HERO_SPOTLIGHT_SLIDES } from '@/app/constants'
@@ -25,15 +26,25 @@ export default function HeroSection() {
     <section className="hp-hero">
       <div className="hp-hero-bg">
         {HERO_SPOTLIGHT_SLIDES.map((src, idx) => (
-          <motion.img
+          <div 
             key={src}
-            src={src}
-            alt=""
-            initial={{ opacity: 0 }}
-            animate={{ opacity: heroSlide === idx ? 1 : 0 }}
-            transition={{ duration: 1.2, ease: 'easeInOut' }}
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
-          />
+            style={{ 
+              position: 'absolute', 
+              inset: 0, 
+              opacity: heroSlide === idx ? 1 : 0,
+              transition: 'opacity 1.2s ease-in-out',
+              zIndex: heroSlide === idx ? 1 : 0
+            }}
+          >
+            <Image
+              src={src}
+              alt=""
+              fill
+              priority={idx === 0}
+              sizes="100vw"
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
         ))}
       </div>
       <div className="hp-hero-overlay" aria-hidden="true" />

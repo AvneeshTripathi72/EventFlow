@@ -5,14 +5,18 @@ import { motion, AnimatePresence } from 'framer-motion'
 import FadeSection from '@/app/components/common/FadeSection'
 import { FAQS } from '@/app/constants'
 
-export default function FaqSection() {
+export default function FaqSection({ 
+  eyebrow = "🤔 Common Questions", 
+  title = "Frequently Asked Questions",
+  titleGradient = false
+}) {
   const [openFaq, setOpenFaq] = useState(0)
 
   return (
     <FadeSection className="hp-shell hp-block hp-faqs">
       <div className="hp-section-head">
-        <p className="hp-eyebrow">❓ FAQs</p>
-        <h2>Quick answers before you book</h2>
+        <p className="hp-eyebrow">{eyebrow}</p>
+        <h2 className={titleGradient ? 'text-gradient' : ''}>{title}</h2>
       </div>
       <div className="hp-faq-list">
         {FAQS.map((item, index) => {

@@ -1,22 +1,24 @@
-"use client";
-
+import dynamic from 'next/dynamic'
 import HeroSection from '@/app/components/home/HeroSection'
 import TopPerformerSection from '@/app/components/home/TopPerformerSection'
 import CategoriesSection from '@/app/components/home/CategoriesSection'
 import FeaturedArtistsSection from '@/app/components/home/FeaturedArtistsSection'
 import WhyChooseSection from '@/app/components/home/WhyChooseSection'
-import TestimonialsSection from '@/app/components/home/TestimonialsSection'
 import HowToBookSection from '@/app/components/home/HowToBookSection'
-import FaqSection from '@/app/components/home/FaqSection'
-import ContactSection from '@/app/components/home/ContactSection'
-import InfoCards from '@/app/components/home/InfoCards'
 import '@/app/styles/pages/HomePage.css'
 
+// Dynamically import below-the-fold sections for better initial load performance
+const TestimonialsSection = dynamic(() => import('@/app/components/home/TestimonialsSection'), { ssr: true })
+const FaqSection = dynamic(() => import('@/app/components/home/FaqSection'), { ssr: true })
+const InfoCards = dynamic(() => import('@/app/components/home/InfoCards'), { ssr: true })
+const ContactSection = dynamic(() => import('@/app/components/home/ContactSection'), { ssr: true })
+
 /**
- * HomePage Component
+ * HomePage Component (Optimized)
  * 
- * This is the main landing page of the application.
- * It has been refactored into modular sections for better maintainability.
+ * Converted to a Server Component to improve SEO and reduce Client-side JS.
+ * Critical above-the-fold sections are loaded statically.
+ * Non-critical sections are loaded dynamically.
  */
 export default function HomePage() {
   return (

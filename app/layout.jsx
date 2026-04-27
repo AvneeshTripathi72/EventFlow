@@ -19,8 +19,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="antialiased">
-        <div className="luxury-grain" />
-        <div className="ambient-canvas" />
         <Providers>
           <AppShellWrapper>
             {children}

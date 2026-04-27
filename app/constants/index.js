@@ -67,43 +67,67 @@ export const WHY_POINTS = [
 
 export const TESTIMONIALS = [
   {
-    name: 'Akansha',
-    location: 'Delhi',
-    type: 'House Party',
+    name: 'Mudit Tyagi',
+    time: 'a month ago',
     stars: 5,
-    title: 'Soft soothing solo singer for a house party',
-    text: 'Magnevents provided a very good singer for our house party with close family and friends. He was interactive and made us all sing with him. He was like a family member by the end of the party and yet very professional!',
+    text: 'Magnevents offered a personalized approach that tailored the artist. The quality that he has maintained is really at next to peak.',
+    isVerified: true
   },
   {
-    name: 'Sakshi & Rohan',
-    location: 'Delhi',
-    type: 'Wedding',
+    name: 'Amrita Singh',
+    time: '2 months ago',
     stars: 5,
-    title: 'The perfect wedding vibe!',
-    text: 'Priyan at Magnevents made it so easy to book a singer for our wedding. The artist was amazing, our guests still talk about the live performance. Super professional team!',
+    text: 'Booked a musician for my wedding last week and it was just made the wedding ceremony really smooth.',
+    isVerified: true
   },
   {
-    name: 'Jaswinder Kaur',
-    location: 'Gurgaon',
-    type: 'Corporate Event',
+    name: 'Vipin Kumar',
+    time: '3 months ago',
     stars: 5,
-    title: 'Smooth booking, great band!',
-    text: 'I wanted a live band for our corporate annual meet in Gurgaon. The whole process was so smooth. Excellent band, great sound setup, zero stress. Highly recommend!',
+    text: 'Very vibrant managed event good job.',
+    isVerified: true
   },
   {
-    name: 'Mahagun',
-    location: 'Noida',
-    type: 'Festive Evening',
+    name: 'Vinay Kumar',
+    time: '4 months ago',
     stars: 5,
-    title: 'Soulful Sufi night!',
-    text: 'We booked a Sufi band for our festive evening. Beautiful voices, great sound, and perfect coordination. If you want to book musicians you can trust, go with Magnevents.',
+    text: 'Good service and managed very well.',
+    isVerified: true
+  },
+  {
+    name: 'Aditi Chauhan',
+    time: 'a month ago',
+    stars: 5,
+    text: 'I booked a singer for my sangeet. Very professional and soulful voice. Everyone loved the performance.',
+    isVerified: true
   },
 ]
 
 export const FAQS = [
-  { q: 'How soon can I get artist options?',       a: 'Most requests receive curated options within 2 to 6 hours, depending on city and event date.' },
-  { q: 'Can I book multiple artist categories?',   a: 'Yes. We can combine singers, bands, anchors, and specialty acts into one event lineup.' },
-  { q: 'Do you handle sound and coordination too?', a: 'Yes. Based on your package, we provide sound setup and on-ground event coordination.' },
+  { 
+    q: 'How soon can I get artist options?', 
+    a: 'Most requests receive curated options within 2 to 6 hours. For peak wedding dates or celebrity artists, it may take up to 24 hours to verify availability.' 
+  },
+  { 
+    q: 'Can I book multiple artist categories for one event?', 
+    a: 'Yes. We specialize in "Full-Show Flow." You can combine a Sufi singer for welcoming, an Anchor for hosting, and a DJ for the after-party in one single booking.' 
+  },
+  { 
+    q: 'Do you handle sound and technical coordination?', 
+    a: 'Yes. Most of our packages include professional sound engineers and equipment. We ensure the artist’s technical rider is met without you worrying about cables or mixers.' 
+  },
+  { 
+    q: 'What if an artist is unable to perform last minute?', 
+    a: 'Peace of mind is our priority. In the rare case of a medical emergency, Magnevents guarantees a replacement of equal or higher caliber through our verified artist network.' 
+  },
+  { 
+    q: 'Can we request specific songs or a customized setlist?', 
+    a: 'Absolutely. We encourage you to share your "Must-Play" list. Whether it’s a specific entry song for a bride or a corporate anthem, our artists will tailor their performance.' 
+  },
+  { 
+    q: 'How far in advance should I book my entertainment?', 
+    a: 'For peak wedding seasons (Nov-Feb), we recommend booking 3-4 months in advance. For corporate mixers or house parties, 2-3 weeks is usually sufficient.' 
+  },
 ]
 
 export const NAV_LINKS = [
@@ -127,7 +151,6 @@ export const NAV_LINKS = [
   { label: 'Pricing', path: '/pricing' },
   { label: 'Services', path: '/services' },
   { label: 'About Us', path: '/about' },
-  { label: 'Contact Us', path: '/contact' },
 ]
 
 export const ARTISTS_CAT_FILTER = ['All', 'Singers', 'Bands', 'DJs', 'Instrumentalists', 'Stage Shows']

@@ -14,42 +14,40 @@ import '@/app/styles/pages/WhyChoose.css'
  */
 export default function WhyChoosePage() {
   return (
-    <AppShellWrapper>
-      <main className="lux-page why-choose-page">
-        <div className="lux-container">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="why-choose-header"
-          >
-            <span className="accent-tag">EXCELLENCE</span>
-            <h1>Why Choose <span className="text-gradient">Magnevents?</span></h1>
-            <p>Your Trusted Partner for Live Music Booking Services</p>
-          </motion.div>
+    <main className="lux-page why-choose-page">
+      <div className="lux-container">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="why-choose-header"
+        >
+          <span className="accent-tag">EXCELLENCE</span>
+          <h1>Why Choose <span className="text-gradient">Magnevents?</span></h1>
+          <p>Your Trusted Partner</p>
+        </motion.div>
 
-          <div className="why-choose-grid">
-            {WHY_CHOOSE_FEATURES.map((feature, idx) => (
-              <FeatureCard 
-                key={idx}
-                icon={feature.icon}
-                title={feature.title}
-                desc={feature.desc}
-                accent={feature.accent}
-                index={idx}
-              />
-            ))}
-          </div>
-
-          <motion.section 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="why-cta-section"
-          >
-            <h2>Ready to find your perfect artist?</h2>
-            <button className="matrix-btn">Explore Categories</button>
-          </motion.section>
+        <div className="why-choose-grid">
+          {WHY_CHOOSE_FEATURES.map((feature, idx) => (
+            <FeatureCard 
+              key={idx}
+              icon={feature.icon}
+              title={feature.title}
+              desc={feature.desc}
+              accent={feature.accent}
+              index={idx}
+            />
+          ))}
         </div>
-      </main>
-    </AppShellWrapper>
+
+        <motion.section 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="why-cta-section"
+        >
+          <h2>Ready to find your perfect artist?</h2>
+          <button className="matrix-btn">Explore Categories</button>
+        </motion.section>
+      </div>
+    </main>
   )
 }

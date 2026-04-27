@@ -29,7 +29,7 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
-  background-color: #080706;
+  background-color: #111111;
   color: #ffffff;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;

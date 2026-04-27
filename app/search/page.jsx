@@ -45,63 +45,61 @@ export default function SearchPage() {
   }
 
   return (
-    <AppShellWrapper>
-      <main className="search-page-layout">
-        <div className="lux-container">
-          <header className="search-page-header">
-            <h1>Discover <span className="text-gradient">Magic</span></h1>
-            <p>Search for artists, categories, or events to find your perfect match.</p>
-          </header>
+    <main className="search-page-layout">
+      <div className="lux-container">
+        <header className="search-page-header">
+          <h1>Discover <span className="text-gradient">Magic</span></h1>
+          <p>Search for artists, categories, or events to find your perfect match.</p>
+        </header>
 
-          <form className="search-large-bar" onSubmit={handleSearch}>
-            <input 
-              type="text" 
-              placeholder="Search for 'Sufi Singers', 'Wedding Bands'..." 
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              autoFocus
-            />
-            <button type="submit" className="fx-glow-button" disabled={isSearching}>
-              {isSearching ? 'Searching...' : 'Find Talent'}
-            </button>
-          </form>
+        <form className="search-large-bar" onSubmit={handleSearch}>
+          <input 
+            type="text" 
+            placeholder="Search for 'Sufi Singers', 'Wedding Bands'..." 
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            autoFocus
+          />
+          <button type="submit" className="fx-glow-button" disabled={isSearching}>
+            {isSearching ? 'Searching...' : 'Find Talent'}
+          </button>
+        </form>
 
-          <div className="search-results-area">
-            <AnimatePresence>
-              {results.length > 0 ? (
-                <div className="results-grid">
-                  {results.map((res, idx) => (
-                    <SearchResultItem 
-                      key={res.id} 
-                      result={res} 
-                      index={idx} 
-                    />
-                  ))}
-                </div>
-              ) : query && !isSearching ? (
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="search-empty"
-                >
-                  <p>No results found for "{query}". Try searching for categories like "Singers" or "Bands".</p>
-                </motion.div>
-              ) : null}
-            </AnimatePresence>
-          </div>
+        <div className="search-results-area">
+          <AnimatePresence>
+            {results.length > 0 ? (
+              <div className="results-grid">
+                {results.map((res, idx) => (
+                  <SearchResultItem 
+                    key={res.id} 
+                    result={res} 
+                    index={idx} 
+                  />
+                ))}
+              </div>
+            ) : query && !isSearching ? (
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="search-empty"
+              >
+                <p>No results found for "{query}". Try searching for categories like "Singers" or "Bands".</p>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
+        </div>
 
-          <div className="search-trending">
-            <h5>Trending Searches</h5>
-            <div className="trending-tags">
-              {TRENDING_SEARCHES.map(tag => (
-                <button key={tag} onClick={() => handleTrendingClick(tag)}>
-                  {tag}
-                </button>
-              ))}
-            </div>
+        <div className="search-trending">
+          <h5>Trending Searches</h5>
+          <div className="trending-tags">
+            {TRENDING_SEARCHES.map(tag => (
+              <button key={tag} onClick={() => handleTrendingClick(tag)}>
+                {tag}
+              </button>
+            ))}
           </div>
         </div>
-      </main>
-    </AppShellWrapper>
+      </div>
+    </main>
   )
 }

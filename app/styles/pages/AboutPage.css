@@ -1,6 +1,6 @@
 .about-page-layout {
   padding-bottom: 120px;
-  background: #080706;
+  background: #111111;
 }
 
 .about-hero {
@@ -29,7 +29,7 @@
 .about-hero-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, transparent 0%, #080706 90%);
+  background: radial-gradient(circle at center, transparent 0%, #111111 90%);
   z-index: 2;
 }
 

@@ -14,26 +14,24 @@ import '@/app/styles/pages/ServicesPage.css'
  */
 export default function ServicesPage() {
   return (
-    <AppShellWrapper>
-      <main className="services-page-layout">
-        <div className="lux-container">
-          <header className="services-header">
-            <span className="accent-tag">EXPERIENCES</span>
-            <h1>Tailored <span className="text-gradient">Entertainment</span></h1>
-            <p>From intimate gatherings to stadium-scale productions, we curate the perfect musical journey for your event.</p>
-          </header>
+    <main className="services-page-layout">
+      <div className="lux-container">
+        <header className="services-header">
+          <span className="accent-tag">EXPERIENCES</span>
+          <h1>Tailored <span className="text-gradient">Entertainment</span></h1>
+          <p>From intimate gatherings to stadium-scale productions, we curate the perfect musical journey for your event.</p>
+        </header>
 
-          <div className="services-grid">
-            {SERVICES.map((s, i) => (
-              <ServiceCard 
-                key={s.title} 
-                service={s} 
-                index={i} 
-              />
-            ))}
-          </div>
+        <div className="services-grid">
+          {SERVICES.map((s, i) => (
+            <ServiceCard 
+              key={s.title} 
+              service={s} 
+              index={i} 
+            />
+          ))}
         </div>
-      </main>
-    </AppShellWrapper>
+      </div>
+    </main>
   )
 }

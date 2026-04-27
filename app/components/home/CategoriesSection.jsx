@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import FadeSection from '@/app/components/common/FadeSection'
 import { ARTIST_CATEGORIES } from '@/app/constants'
@@ -25,8 +26,8 @@ export default function CategoriesSection() {
         </div>
 
         <div className="hp-cat-carousel-wrap">
-          <button className="hp-cat-arrow hp-cat-arrow--left" onClick={() => moveCat(-1)} aria-label="Previous categories">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          <button className="lux-arrow-btn is-left" onClick={() => moveCat(-1)} aria-label="Previous categories">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
           </button>
 
           <div className="hp-cat-carousel">
@@ -41,14 +42,15 @@ export default function CategoriesSection() {
               >
                 {ARTIST_CATEGORIES.slice(catPage * catPerPage, catPage * catPerPage + catPerPage).map((cat, i) => (
                   <Link key={cat.label} href={`/artists?category=${cat.query}`} className="hp-cat-card">
-                    <motion.div
-                      className="hp-cat-img-wrap"
-                      initial={{ opacity: 0, scale: 0.85 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: i * 0.08, duration: 0.4 }}
-                    >
-                      <img src={cat.image} alt={cat.label} loading="lazy" />
-                    </motion.div>
+                    <div className="hp-cat-img-wrap">
+                      <Image 
+                        src={cat.image} 
+                        alt={cat.label} 
+                        width={240} 
+                        height={320} 
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
                     <span className="hp-cat-label">{cat.label.toUpperCase()}</span>
                   </Link>
                 ))}
@@ -56,8 +58,8 @@ export default function CategoriesSection() {
             </AnimatePresence>
           </div>
 
-          <button className="hp-cat-arrow hp-cat-arrow--right" onClick={() => moveCat(1)} aria-label="Next categories">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <button className="lux-arrow-btn" onClick={() => moveCat(1)} aria-label="Next categories">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
           </button>
         </div>
 

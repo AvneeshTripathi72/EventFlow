@@ -41,7 +41,7 @@ export default function ContactSection() {
         </div>
 
         <div className="hp-quote-form">
-          <h3 className="hp-quote-title">Request a Quote</h3>
+          <h3 className="hp-quote-title">Request a call</h3>
           <form className="hp-contact-form" onSubmit={(e) => e.preventDefault()}>
             <div className="hp-form-field">
               <label>Name *</label>

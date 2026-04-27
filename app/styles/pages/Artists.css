@@ -1,7 +1,7 @@
 .artists-page {
   padding-top: 60px;
   padding-bottom: 100px;
-  background: #080706;
+  background: var(--bg-base);
   min-height: 100vh;
 }
 

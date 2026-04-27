@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import FadeSection from '@/app/components/common/FadeSection'
 import TiltCard from '@/app/components/common/TiltCard'
@@ -57,19 +58,19 @@ export default function FeaturedArtistsSection() {
           <div className="hp-feat-controls" aria-label="Featured artists slider controls">
             <button
               type="button"
-              className="hp-feat-control"
+              className="lux-arrow-btn is-left"
               onClick={() => moveFeatured(-1)}
               aria-label="Previous featured artists"
             >
-              ←
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
             <button
               type="button"
-              className="hp-feat-control"
+              className="lux-arrow-btn"
               onClick={() => moveFeatured(1)}
               aria-label="Next featured artists"
             >
-              →
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
           </div>
         </div>
@@ -85,14 +86,20 @@ export default function FeaturedArtistsSection() {
             key={artist.name}
             className="hp-feat-slide"
             data-featured-card
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: '-20px' }}
+            transition={{ duration: 0.45, delay: (i % 3) * 0.1 }}
           >
             <TiltCard className="hp-feat-card">
               <div className="hp-feat-img-wrap">
-                <img src={artist.image} alt={artist.name} loading="lazy" decoding="async" />
+                <Image 
+                  src={artist.image} 
+                  alt={artist.name} 
+                  width={320} 
+                  height={400} 
+                  style={{ objectFit: 'cover' }}
+                />
                 <div className="hp-feat-overlay">
                   <span className="hp-feat-live-pill">Live preview</span>
                 </div>

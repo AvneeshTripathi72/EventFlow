@@ -14,30 +14,28 @@ import '@/app/styles/pages/Testimonials.css'
  */
 export default function TestimonialsPage() {
   return (
-    <AppShellWrapper>
-      <main className="lux-page testimonials-page">
-        <div className="lux-container">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="testi-header"
-          >
-            <span className="accent-tag">REVIEWS</span>
-            <h1>What Our <span className="text-gradient">Clients Say</span></h1>
-            <p>Real Stories. Unforgettable Events.</p>
-          </motion.div>
+    <main className="lux-page testimonials-page">
+      <div className="lux-container">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="testi-header"
+        >
+          <span className="accent-tag">REVIEWS</span>
+          <h1>What Our <span className="text-gradient">Clients Say</span></h1>
+          <p>Real Stories. Unforgettable Events.</p>
+        </motion.div>
 
-          <div className="testi-grid">
-            {TESTIMONIALS.map((review, idx) => (
-              <TestimonialCard 
-                key={idx} 
-                review={review} 
-                index={idx} 
-              />
-            ))}
-          </div>
+        <div className="testi-grid">
+          {TESTIMONIALS.map((review, idx) => (
+            <TestimonialCard 
+              key={idx} 
+              review={review} 
+              index={idx} 
+            />
+          ))}
         </div>
-      </main>
-    </AppShellWrapper>
+      </div>
+    </main>
   )
 }

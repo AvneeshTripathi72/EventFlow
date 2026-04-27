@@ -1,15 +1,17 @@
 "use client";
 
+import dynamic from 'next/dynamic';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTheme } from '@/app/contexts/ThemeContext';
 import BrandMark from '@/app/components/common/BrandMark';
-import ContactModal from '@/app/components/common/ContactModal';
-import SearchOverlay from './SearchOverlay';
-import MobilePanel from './MobilePanel';
 import { NAV_LINKS } from '@/app/constants';
 import '@/app/styles/components/Nav.css';
+
+const ContactModal = dynamic(() => import('@/app/components/common/ContactModal'), { ssr: false });
+const SearchOverlay = dynamic(() => import('./SearchOverlay'), { ssr: false });
+const MobilePanel = dynamic(() => import('./MobilePanel'), { ssr: false });
 
 /**
  * Custom hook to track scroll state
@@ -82,13 +84,7 @@ export default function Nav() {
               <div key={link.label} className={`lux-nav-dropdown-wrap ${link.isMega ? 'is-mega' : ''}`}>
                 <Link 
                   href={link.path || '#'} 
-                  className={`lux-nav-link ${pathname === link.path ? 'is-active' : ''} ${link.label === 'Contact Us' ? 'lux-nav-link-gold' : ''}`}
-                  onClick={(e) => {
-                    if (link.label === 'Contact Us') {
-                      e.preventDefault();
-                      openContactModal('contact');
-                    }
-                  }}
+                  className={`lux-nav-link ${pathname === link.path ? 'is-active' : ''}`}
                 >
                   {link.label} {link.children && <span className="lux-dropdown-icon">▾</span>}
                 </Link>
@@ -98,7 +94,7 @@ export default function Nav() {
                     <div className="lux-dropdown-grid">
                       {link.children.map(child => (
                         <Link key={child.path} href={child.path} className="lux-nav-dropdown-link">
-                          {child.label}
+                          <span>{child.label}</span>
                         </Link>
                       ))}
                     </div>
@@ -109,15 +105,12 @@ export default function Nav() {
           </div>
 
           <div className="lux-nav-right">
-            <button className="lux-icon-btn" onClick={() => setSearchOpen(true)} aria-label="Search">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8" />
-                <path d="m21 21-4.35-4.35" />
-              </svg>
+            <button onClick={() => openContactModal('contact')} className="lux-nav-cta">
+              Contact Us
             </button>
 
-            <button onClick={() => openContactModal('booking')} className="lux-nav-chat">
-              Book Artist
+            <button onClick={() => openContactModal('booking')} className="lux-nav-cta">
+              Artist Registration
             </button>
 
             <button className={`lux-hamburger ${menuOpen ? 'is-open' : ''}`} onClick={() => setMenuOpen(!menuOpen)}>

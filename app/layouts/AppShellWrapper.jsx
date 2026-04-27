@@ -2,8 +2,8 @@
 
 import { usePathname } from 'next/navigation';
 import Nav from '@/app/components/layout/Nav';
-import Footer from '@/app/components/layout/Footer';
 import BottomNav from '@/app/components/layout/BottomNav';
+import Footer from '@/app/components/common/Footer';
 import { useMouseGlow } from '@/app/hooks/useMouseGlow';
 
 const HIDE_CHROME_ON = ['/checkout', '/confirmed', '/login', '/signup', '/onboarding', '/chat'];
