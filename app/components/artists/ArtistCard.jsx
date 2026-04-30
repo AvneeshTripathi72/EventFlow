@@ -1,38 +1,55 @@
 "use client";
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function ArtistCard({ artist, onBook }) {
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.3 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      whileHover={{ y: -10 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
       className="artist-card"
     >
-      <div className="artist-img-wrap">
-        <img src={artist.img} alt={artist.name} />
-        <span className="artist-badge">{artist.badge}</span>
+      <div className="artist-img-container">
+        <Image 
+          src={artist.img || '/assets/lux-hero-artist.jpg'} 
+          alt={artist.name}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="artist-main-img"
+        />
+        <div className="artist-img-overlay" />
+        {artist.badge && (
+          <div className="artist-premium-badge">
+            <span className="badge-dot"></span>
+            {artist.badge}
+          </div>
+        )}
       </div>
-      <div className="artist-info">
-        <h3>{artist.name}</h3>
-        <div className="artist-tags">
-          {artist.tags.map(tag => (
-            <span key={tag} className="artist-tag">{tag}</span>
-          ))}
+
+      <div className="artist-glass-body">
+        <div className="artist-meta-top">
+          <h3>{artist.name}</h3>
+          <div className="artist-genre-list">
+            {artist.tags.join(' • ')}
+          </div>
         </div>
-        <div className="artist-stats">
-          <div className="artist-price">
-            <span>Starting at</span><br />
-            {artist.price}
+
+        <div className="artist-footer">
+          <div className="artist-pricing-block">
+            <span className="price-label">Starting at</span>
+            <div className="price-value">{artist.price}</div>
           </div>
           <button 
-            className="artist-book-btn"
+            className="artist-action-btn"
             onClick={() => onBook(artist.name)}
           >
-            Book Now
+            <span>Book Now</span>
+            <div className="btn-glow" />
           </button>
         </div>
       </div>

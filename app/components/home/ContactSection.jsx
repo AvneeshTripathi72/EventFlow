@@ -6,9 +6,12 @@ import FadeSection from '@/app/components/common/FadeSection'
 export default function ContactSection() {
   return (
     <FadeSection className="hp-shell hp-block hp-contact" id="contact">
+      <div className="hp-section-head">
+        <p className="hp-eyebrow">✉️ Quick Contact</p>
+        <h2>Get in Touch</h2>
+      </div>
       <div className="hp-contact-inner">
         <div className="hp-contact-info">
-          <p className="hp-eyebrow">📞 Contact</p>
 
           <div className="hp-contact-channels">
             <a href="tel:+918076515257" className="hp-channel-card">

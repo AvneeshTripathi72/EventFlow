@@ -1,7 +1,7 @@
 .lux-footer {
   background-color: #000000;
   color: var(--text-main);
-  padding: var(--spacing-7) 0 var(--spacing-6);
+  padding: var(--spacing-5) 0 var(--spacing-4);
   position: relative;
   overflow: hidden;
   font-family: var(--font-body);

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { AppShellWrapper } from '@/app/layouts/AppShellWrapper'
 import ArtistCard from '@/app/components/artists/ArtistCard'
@@ -14,6 +15,7 @@ import '@/app/styles/pages/Artists.css'
  * Refactored to use modular ArtistCard and centralized constants.
  */
 export default function ArtistsPage() {
+  const router = useRouter()
   const [activeCategory, setActiveCategory] = useState('All')
 
   const filteredArtists = activeCategory === 'All' 
@@ -21,8 +23,7 @@ export default function ArtistsPage() {
     : ALL_ARTISTS.filter(a => a.category === activeCategory)
 
   const handleBook = (name) => {
-    const event = new CustomEvent('open-contact-modal', { detail: { artist: name } })
-    window.dispatchEvent(event)
+    router.push(`/book?artist=${encodeURIComponent(name)}`)
   }
 
   return (

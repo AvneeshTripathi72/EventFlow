@@ -48,7 +48,8 @@ export default function Nav() {
   }, [pathname]);
 
   useEffect(() => {
-    const handleOpenModal = () => {
+    const handleOpenModal = (e) => {
+      if (e.detail?.type) setModalType(e.detail.type);
       setContactModalOpen(true);
       setMenuOpen(false);
     };
@@ -109,8 +110,11 @@ export default function Nav() {
               Contact Us
             </button>
 
-            <button onClick={() => openContactModal('booking')} className="lux-nav-cta">
-              Artist Registration
+            <button 
+              onClick={() => window.dispatchEvent(new CustomEvent('open-register-modal'))} 
+              className="lux-nav-cta"
+            >
+              Artist Register
             </button>
 
             <button className={`lux-hamburger ${menuOpen ? 'is-open' : ''}`} onClick={() => setMenuOpen(!menuOpen)}>

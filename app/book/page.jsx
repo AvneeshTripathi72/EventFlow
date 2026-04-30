@@ -1,21 +1,47 @@
 "use client"
 
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useSearchParams } from 'next/navigation'
 import { AppShellWrapper } from '@/app/layouts/AppShellWrapper'
-import ReservationCard from '@/app/components/forms/ReservationCard'
-import BenefitItem from '@/app/components/common/BenefitItem'
+import { bookingService } from '@/app/services/bookingService'
 import '@/app/styles/pages/Book.css'
 
-/**
- * BookPage Component
- * 
- * Main reservation page with priority booking options.
- * Refactored into modular components for scalability.
- */
 export default function BookPage() {
-  const handleOpenModal = () => {
-    const event = new CustomEvent('open-contact-modal', { detail: { type: 'booking' } })
-    window.dispatchEvent(event)
+  const searchParams = useSearchParams()
+  const artistName = searchParams.get('artist') || ''
+  
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    artistType: artistName || '',
+    eventType: '',
+    date: '',
+    message: ''
+  })
+  
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+
+  useEffect(() => {
+    if (artistName) {
+      setFormData(prev => ({ ...prev, artistType: artistName }))
+    }
+  }, [artistName])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    
+    try {
+      await bookingService.submitRequest(formData)
+      setIsSubmitting(false)
+      setSubmitted(true)
+    } catch (error) {
+      console.error("Booking error:", error)
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -43,39 +69,102 @@ export default function BookPage() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              Our elite artists book up to 12 months in advance. Start your inquiry now to check availability for your special occasion.
+              Tell us your vision, and we will find the perfect stage presence for you.
             </motion.p>
           </header>
 
-          <div className="book-grid">
-            <ReservationCard 
-              title="Direct Booking"
-              desc="Ready to confirm? Fill out our priority booking form for a 2-hour response time from our curation team."
-              actionLabel="Start Priority Form"
-              onAction={handleOpenModal}
-              direction="left"
-            />
-            
-            <ReservationCard 
-              title="Concierge Call"
-              desc="Prefer to speak with an expert? Schedule a 15-minute consultation with our world-class event specialists."
-              actionLabel="Call +91 80765 15257"
-              isExternal
-              href="tel:+918076515257"
-              direction="right"
-            />
-          </div>
+          <div className="book-form-container">
+            {submitted ? (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="booking-success-box"
+              >
+                <div className="success-icon">✓</div>
+                <h2>Booking Request Sent!</h2>
+                <p>Our concierge team will review your request and contact you within 2-6 hours.</p>
+                <button onClick={() => window.location.href = '/'} className="return-home-btn">
+                  Return to Home
+                </button>
+              </motion.div>
+            ) : (
+              <form className="lux-booking-form" onSubmit={handleSubmit}>
+                <div className="form-grid">
+                  <div className="form-group">
+                    <label>Full Name</label>
+                    <input 
+                      type="text" required placeholder="Enter your name"
+                      value={formData.name}
+                      onChange={e => setFormData({...formData, name: e.target.value})}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Phone Number</label>
+                    <input 
+                      type="tel" required placeholder="+91"
+                      value={formData.phone}
+                      onChange={e => setFormData({...formData, phone: e.target.value})}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Email Address</label>
+                    <input 
+                      type="email" required placeholder="your@email.com"
+                      value={formData.email}
+                      onChange={e => setFormData({...formData, email: e.target.value})}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Preferred Artist / Category</label>
+                    <input 
+                      type="text" required placeholder="e.g. Sufi Singer, Band"
+                      value={formData.artistType}
+                      onChange={e => setFormData({...formData, artistType: e.target.value})}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Event Date</label>
+                    <input 
+                      type="date" required
+                      value={formData.date}
+                      onChange={e => setFormData({...formData, date: e.target.value})}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Event Type</label>
+                    <select 
+                      required
+                      value={formData.eventType}
+                      onChange={e => setFormData({...formData, eventType: e.target.value})}
+                    >
+                      <option value="">Select Event</option>
+                      <option value="wedding">Wedding</option>
+                      <option value="corporate">Corporate</option>
+                      <option value="party">Private Party</option>
+                      <option value="concert">Concert</option>
+                    </select>
+                  </div>
+                </div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="book-footer"
-          >
-            <BenefitItem label="Verified Elite Artists" />
-            <BenefitItem label="Secure Transactions" />
-            <BenefitItem label="24/7 Priority Support" />
-          </motion.div>
+                <div className="form-group full-width">
+                  <label>Event Details & Requirements</label>
+                  <textarea 
+                    rows="4" required 
+                    placeholder="Tell us about the venue, audience size, and any special requests..."
+                    value={formData.message}
+                    onChange={e => setFormData({...formData, message: e.target.value})}
+                  />
+                </div>
+
+                <div className="form-footer">
+                  <button type="submit" className="booking-submit-btn" disabled={isSubmitting}>
+                    {isSubmitting ? 'Processing Request...' : 'Confirm Priority Booking'}
+                    <div className="btn-shine" />
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
 
         </div>
       </main>

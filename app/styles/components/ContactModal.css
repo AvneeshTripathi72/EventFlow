@@ -18,8 +18,8 @@
 .lux-modal-content {
   position: relative;
   width: min(580px, 100%);
-  background: #0d0d0d;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 32px;
   box-shadow: 0 50px 100px rgba(0, 0, 0, 0.9);
   padding: 48px;
@@ -41,21 +41,25 @@
 
 .lux-modal-close {
   position: absolute;
-  top: 32px;
-  right: 32px;
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.3);
+  top: 24px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
   cursor: pointer;
   transition: all 0.3s ease;
-  padding: 8px;
-  border-radius: 12px;
+  padding: 10px;
+  border-radius: 14px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .lux-modal-close:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.1);
   transform: rotate(90deg);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .header-badge {
@@ -99,11 +103,12 @@
   border: none;
   background: none;
   color: #8a8f98;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   z-index: 2;
   transition: color 0.3s ease;
+  white-space: nowrap;
 }
 
 .form-type-switcher button.active {
@@ -115,9 +120,9 @@
   top: 6px;
   bottom: 6px;
   width: calc(50% - 6px);
-  background: #FFE032;
+  background: var(--hp-brand, #FFE032);
   border-radius: 12px;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
   z-index: 1;
 }
 
@@ -168,9 +173,9 @@
 .lux-form-group input:focus,
 .lux-form-group select:focus,
 .lux-form-group textarea:focus {
-  border-color: #FFE032;
-  background: #1a1a1a;
-  box-shadow: 0 0 20px rgba(246, 182, 78, 0.05);
+  border-color: var(--hp-brand, #FFE032);
+  background: #0d0d0d;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.05);
 }
 
 .lux-form-group select {
@@ -181,6 +186,29 @@
   background-position: right 16px center;
 }
 
+/* Sky Blue Overrides for Register */
+.lux-modal-content.register .header-badge {
+  color: #00d4ff;
+}
+
+.lux-modal-content.register .lux-form-group input:focus,
+.lux-modal-content.register .lux-form-group select:focus,
+.lux-modal-content.register .lux-form-group textarea:focus {
+  border-color: #00d4ff;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+}
+
+.lux-modal-content.register .lux-modal-header h3 {
+  background: linear-gradient(135deg, #fff 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lux-modal-content.register .btn-submit-premium {
+  background: #00d4ff;
+  box-shadow: 0 10px 25px rgba(0, 212, 255, 0.2);
+}
+
 /* Submit Button */
 .lux-modal-footer {
   margin-top: 12px;
@@ -189,13 +217,13 @@
 .btn-submit-premium {
   position: relative;
   width: 100%;
-  background: #FFE032;
+  background: var(--hp-brand, #FFE032);
   border: none;
   padding: 18px;
   border-radius: 16px;
   cursor: pointer;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .btn-submit-premium .btn-text {
@@ -216,7 +244,7 @@
 
 .btn-submit-premium:hover {
   transform: translateY(-2px);
-  box-shadow: 0 15px 30px rgba(246, 182, 78, 0.2);
+  box-shadow: 0 15px 30px rgba(0, 212, 255, 0.15);
 }
 
 .btn-submit-premium:hover .btn-glow {
@@ -236,7 +264,7 @@
 .lux-success-ring {
   width: 80px;
   height: 80px;
-  border: 2px solid #FFE032;
+  border: 2px solid var(--hp-brand, #FFE032);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -246,7 +274,7 @@
 
 .lux-success-check {
   font-size: 40px;
-  color: #FFE032;
+  color: var(--hp-brand, #FFE032);
 }
 
 .lux-modal-success h4 {
@@ -263,5 +291,9 @@
   }
   .lux-modal-header h3 {
     font-size: 26px;
+  }
+  .form-type-switcher button {
+    font-size: 11px;
+    padding: 10px 4px;
   }
 }

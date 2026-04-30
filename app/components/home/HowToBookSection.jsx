@@ -13,7 +13,7 @@ export default function HowToBookSection() {
         <div className="hp-section-head">
           <p className="hp-eyebrow">🎵 Simple Process</p>
           <h2>How to book a musician</h2>
-          <p className="hp-how-desc">Your Live Music in 4 Easy Steps</p>
+
         </div>
 
         <div className="steps-timeline">
@@ -22,9 +22,9 @@ export default function HowToBookSection() {
               key={idx} 
               step={step} 
               index={idx} 
+              isLast={idx === HOW_TO_BOOK_STEPS.length - 1}
             />
           ))}
-          <div className="timeline-line" />
         </div>
       </div>
     </FadeSection>

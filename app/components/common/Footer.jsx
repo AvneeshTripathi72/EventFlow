@@ -1,3 +1,4 @@
+"use client";
 import Link from 'next/link';
 import BrandMark from '@/app/components/common/BrandMark';
 import '@/app/styles/components/Footer.css';
@@ -10,6 +11,11 @@ import '@/app/styles/components/Footer.css';
  */
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+
+  const triggerModal = (e, type) => {
+    e.preventDefault();
+    window.dispatchEvent(new CustomEvent('open-contact-modal', { detail: { type } }));
+  };
 
   return (
     <footer className="lux-footer">
@@ -56,7 +62,7 @@ export default function Footer() {
               <li><Link href="/about" className="lux-footer-link">Our Story</Link></li>
               <li><Link href="/services" className="lux-footer-link">Services</Link></li>
               <li><Link href="/why-choose" className="lux-footer-link">Why Choose Us</Link></li>
-              <li><Link href="/contact" className="lux-footer-link">Contact Support</Link></li>
+              <li><button type="button" onClick={(e) => triggerModal(e, 'contact')} className="lux-footer-link" style={{ textAlign: 'left', width: '100%', padding: 0 }}>Contact Support</button></li>
             </ul>
           </div>
 
@@ -66,7 +72,7 @@ export default function Footer() {
               <li><Link href="/faq" className="lux-footer-link">Help Center</Link></li>
               <li><Link href="/testimonials" className="lux-footer-link">Client Reviews</Link></li>
               <li><Link href="/search" className="lux-footer-link">Search Site</Link></li>
-              <li><Link href="/book" className="lux-footer-link">Instant Booking</Link></li>
+              <li><button type="button" onClick={(e) => triggerModal(e, 'booking')} className="lux-footer-link" style={{ textAlign: 'left', width: '100%', padding: 0 }}>Instant Booking</button></li>
             </ul>
           </div>
 

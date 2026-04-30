@@ -18,11 +18,6 @@ export default function CategoriesSection() {
       <div className="hp-cat-section">
         <div className="hp-cat-header">
           <h2 className="hp-cat-title">Artist Categories</h2>
-          <p className="hp-cat-desc">
-            Bring your events to the next level with the best artists — book top musicians, live singers, DJs, 
-            stand up comedians, motivational speakers, emcees and more. Seamless booking for an 
-            unforgettable event with Magnevents.
-          </p>
         </div>
 
         <div className="hp-cat-carousel-wrap">
@@ -46,8 +41,8 @@ export default function CategoriesSection() {
                       <Image 
                         src={cat.image} 
                         alt={cat.label} 
-                        width={240} 
-                        height={320} 
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
                         style={{ objectFit: 'cover' }}
                       />
                     </div>

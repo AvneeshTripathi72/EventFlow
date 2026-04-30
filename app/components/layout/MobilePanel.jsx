@@ -57,12 +57,12 @@ export default function MobilePanel({ isOpen, onClose, isLight, pathname, onOpen
           </button>
           <button 
             onClick={() => {
-              onOpenContactModal('booking');
+              window.dispatchEvent(new CustomEvent('open-register-modal'));
               onClose();
             }} 
             className="lux-mobile-cta"
           >
-            Artist Registration
+            Artist Register
           </button>
         </div>
       </aside>

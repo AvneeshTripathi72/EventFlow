@@ -45,7 +45,16 @@ export default function PremiumShowcase() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
             >
-              <Link href={card.path} className="premium-card">
+              <Link 
+                href={card.path} 
+                className="premium-card"
+                onClick={(e) => {
+                  if (card.path === '/contact') {
+                    e.preventDefault();
+                    window.dispatchEvent(new CustomEvent('open-contact-modal', { detail: { type: 'booking' } }));
+                  }
+                }}
+              >
                 <div className="card-glow" style={{ backgroundColor: card.color }} />
                 <div className="card-inner">
                   <span className="card-icon">{card.icon}</span>

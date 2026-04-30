@@ -6,7 +6,7 @@ import { bookingService } from '@/app/services/bookingService'
 import '@/app/styles/components/ContactModal.css'
 
 export default function ContactModal({ isOpen, onClose, initialType = 'booking' }) {
-  const [formType, setFormType] = useState(initialType) // 'booking' | 'contact'
+  const [formType, setFormType] = useState(initialType) // 'booking' | 'contact' | 'register'
   
   const [formData, setFormData] = useState({
     name: '',
@@ -15,7 +15,9 @@ export default function ContactModal({ isOpen, onClose, initialType = 'booking' 
     artistType: '',
     eventType: '',
     date: '',
-    message: ''
+    message: '',
+    portfolio: '',
+    bio: ''
   })
   
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -41,7 +43,10 @@ export default function ContactModal({ isOpen, onClose, initialType = 'booking' 
       // Auto close after success
       setTimeout(() => {
         onClose()
-        setFormData({ name: '', email: '', phone: '', artistType: '', eventType: '', date: '', message: '' })
+        setFormData({ 
+          name: '', email: '', phone: '', artistType: '', 
+          eventType: '', date: '', message: '', portfolio: '', bio: '' 
+        })
       }, 2500)
     } catch (error) {
       console.error("Booking error:", error)
@@ -64,7 +69,7 @@ export default function ContactModal({ isOpen, onClose, initialType = 'booking' 
         />
         
         <motion.div 
-          className="lux-modal-content"
+          className={`lux-modal-content ${formType}`}
           initial={{ opacity: 0, scale: 0.95, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 30 }}
@@ -77,9 +82,17 @@ export default function ContactModal({ isOpen, onClose, initialType = 'booking' 
           </button>
 
           <div className="lux-modal-header">
-            <div className="header-badge">{formType === 'booking' ? 'ELEVATE YOUR EVENT' : 'DIRECT SUPPORT'}</div>
-            <h3>{formType === 'booking' ? 'Reserve Your Artist' : 'Get in Touch'}</h3>
-            <p>{formType === 'booking' ? 'Tell us your vision, and we will find the perfect stage presence for you.' : 'Our team is here to help you with any inquiries or custom requests.'}</p>
+            <div className="header-badge">
+              {formType === 'booking' ? 'ELEVATE YOUR EVENT' : formType === 'register' ? 'JOIN OUR ROSTER' : 'DIRECT SUPPORT'}
+            </div>
+            <h3>
+              {formType === 'booking' ? 'Reserve Your Artist' : formType === 'register' ? 'Artist Registration' : 'Get in Touch'}
+            </h3>
+            <p>
+              {formType === 'booking' ? 'Tell us your vision, and we will find the perfect stage presence for you.' : 
+               formType === 'register' ? 'Showcase your talent to the world. Join Magnevents and perform at premium venues.' :
+               'Our team is here to help you with any inquiries or custom requests.'}
+            </p>
           </div>
 
           <div className="form-type-switcher">
@@ -89,6 +102,7 @@ export default function ContactModal({ isOpen, onClose, initialType = 'booking' 
             >
               Artist Booking
             </button>
+
             <button 
               className={formType === 'contact' ? 'active' : ''} 
               onClick={() => setFormType('contact')}
@@ -140,7 +154,7 @@ export default function ContactModal({ isOpen, onClose, initialType = 'booking' 
                 />
               </div>
 
-              {formType === 'booking' && (
+              {(formType === 'booking' || formType === 'register') && (
                 <motion.div 
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
@@ -159,26 +173,47 @@ export default function ContactModal({ isOpen, onClose, initialType = 'booking' 
                         <option value="band">Live Band</option>
                         <option value="dj">DJ</option>
                         <option value="sufi">Sufi Artist</option>
+                        <option value="magician">Magician</option>
+                        <option value="comedian">Comedian</option>
+                        <option value="speaker">Speaker</option>
+                        <option value="emcee">Emcee/Anchor</option>
                         <option value="other">Other</option>
                       </select>
                     </div>
-                    <div className="lux-form-group">
-                      <label>Event Date</label>
-                      <input 
-                        type="date" required
-                        value={formData.date}
-                        onChange={e => setFormData({...formData, date: e.target.value})}
-                      />
-                    </div>
+                    {formType === 'booking' ? (
+                      <div className="lux-form-group">
+                        <label>Event Date</label>
+                        <input 
+                          type="date" required
+                          value={formData.date}
+                          onChange={e => setFormData({...formData, date: e.target.value})}
+                        />
+                      </div>
+                    ) : (
+                      <div className="lux-form-group">
+                        <label>Portfolio / Social Link</label>
+                        <input 
+                          type="url" required placeholder="Instagram, YouTube or Website"
+                          value={formData.portfolio}
+                          onChange={e => setFormData({...formData, portfolio: e.target.value})}
+                        />
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               )}
 
               <div className="lux-form-group">
-                <label>{formType === 'booking' ? 'Event Details' : 'Message'}</label>
+                <label>
+                  {formType === 'booking' ? 'Event Details' : formType === 'register' ? 'Bio & Experience' : 'Message'}
+                </label>
                 <textarea 
                   rows="3" required 
-                  placeholder={formType === 'booking' ? "Tell us about the venue, audience, and your specific requirements..." : "How can we help you?"}
+                  placeholder={
+                    formType === 'booking' ? "Tell us about the venue, audience, and your specific requirements..." : 
+                    formType === 'register' ? "Briefly describe your performances, experience, and what makes you unique..." :
+                    "How can we help you?"
+                  }
                   value={formData.message}
                   onChange={e => setFormData({...formData, message: e.target.value})}
                 ></textarea>
@@ -186,7 +221,13 @@ export default function ContactModal({ isOpen, onClose, initialType = 'booking' 
 
               <div className="lux-modal-footer">
                 <button type="submit" className="btn-submit-premium" disabled={isSubmitting}>
-                  <span className="btn-text">{isSubmitting ? 'Processing...' : (formType === 'booking' ? 'Request Booking' : 'Send Message')}</span>
+                  <span className="btn-text">
+                    {isSubmitting ? 'Processing...' : (
+                      formType === 'booking' ? 'Request Booking' : 
+                      formType === 'register' ? 'Register as Artist' : 
+                      'Send Message'
+                    )}
+                  </span>
                   <div className="btn-glow" />
                 </button>
               </div>

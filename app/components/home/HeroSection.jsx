@@ -24,16 +24,18 @@ export default function HeroSection() {
 
   return (
     <section className="hp-hero">
-      <div className="hp-hero-bg">
+      <div className="hp-hero-bg" style={{ pointerEvents: 'none' }}>
         {HERO_SPOTLIGHT_SLIDES.map((src, idx) => (
           <div 
             key={src}
+            className={`hp-hero-slide ${heroSlide === idx ? 'is-active' : ''}`}
             style={{ 
               position: 'absolute', 
               inset: 0, 
               opacity: heroSlide === idx ? 1 : 0,
-              transition: 'opacity 1.2s ease-in-out',
-              zIndex: heroSlide === idx ? 1 : 0
+              zIndex: heroSlide === idx ? 2 : 1,
+              transition: 'opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1)',
+              willChange: 'opacity'
             }}
           >
             <Image
@@ -41,6 +43,8 @@ export default function HeroSection() {
               alt=""
               fill
               priority={idx === 0}
+              loading={idx === 0 ? "eager" : "lazy"}
+              quality={85}
               sizes="100vw"
               style={{ objectFit: 'cover' }}
             />
@@ -81,11 +85,16 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.45 }}
             >
-              <button onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal'))} className="hp-btn hp-btn-primary">
+              <button 
+                onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal', { detail: { type: 'booking' } }))}
+                className="hp-btn hp-btn-primary"
+              >
                 <span>Book Now</span>
                 <span className="hp-btn-shine" aria-hidden="true" />
               </button>
-              <button onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal'))} className="hp-btn hp-btn-ghost">Look Now</button>
+              <Link href="/artists" className="hp-btn hp-btn-ghost">
+                Look Now
+              </Link>
             </motion.div>
 
             <motion.div

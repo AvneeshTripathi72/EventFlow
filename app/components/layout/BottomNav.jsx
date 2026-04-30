@@ -70,7 +70,15 @@ export default function BottomNav() {
         <Tab path="/" icon={(color) => <HomeIcon color={color} />} label="Home" onNavigate={(p) => router.push(p)} isActive={active('/')} />
         <Tab path="/services" icon={(color) => <ServicesIcon color={color} />} label="Services" onNavigate={(p) => router.push(p)} isActive={active('/services')} />
         <Tab path="/about" icon={(color) => <AboutIcon color={color} />} label="About" onNavigate={(p) => router.push(p)} isActive={active('/about')} />
-        <Tab path="/contact" icon={(color) => <ContactIcon color={color} />} label="Contact Us" onNavigate={(p) => router.push(p)} isActive={active('/contact')} />
+        <Tab 
+          path="/contact" 
+          icon={(color) => <ContactIcon color={color} />} 
+          label="Contact Us" 
+          onNavigate={(p) => {
+            window.dispatchEvent(new CustomEvent('open-contact-modal', { detail: { type: 'contact' } }));
+          }} 
+          isActive={active('/contact')} 
+        />
       </div>
 
       <div className="booking-bottom-nav-spacer" style={{ height: 'calc(62px + env(safe-area-inset-bottom))' }} />

@@ -7,6 +7,8 @@ import '@fontsource/inter/500.css';
 import '@fontsource/inter/600.css';
 import '@fontsource/inter/700.css';
 
+import ContactModal from '@/app/components/common/ContactModal'
+import RegisterModal from '@/app/components/common/RegisterModal'
 import { Providers } from '@/app/layouts/Providers';
 import { AppShellWrapper } from '@/app/layouts/AppShellWrapper';
 
@@ -23,9 +25,10 @@ export default function RootLayout({ children }) {
           <AppShellWrapper>
             {children}
           </AppShellWrapper>
+          <ContactModal />
+          <RegisterModal />
         </Providers>
       </body>
     </html>
   );
 }
-

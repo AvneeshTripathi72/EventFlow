@@ -1,3 +1,5 @@
+"use client";
+
 import Image from 'next/image'
 import Link from 'next/link'
 import FadeSection from '@/app/components/common/FadeSection'
@@ -51,12 +53,14 @@ export default function TopPerformerSection() {
             </div>
           </div>
 
-          <Link 
-            href={`/book?artist=${encodeURIComponent(ARTIST_OF_MONTH.name)}`} 
+          <button 
+            onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal', { 
+              detail: { type: 'booking', artist: ARTIST_OF_MONTH.name } 
+            }))}
             className="hp-btn hp-aom-btn"
           >
             Book This Artist
-          </Link>
+          </button>
         </div>
       </div>
     </FadeSection>

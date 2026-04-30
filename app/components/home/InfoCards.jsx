@@ -8,6 +8,10 @@ export default function InfoCards() {
   return (
     <section className="hp-journey-section">
       <div className="lux-container">
+        <div className="hp-section-head">
+          <p className="hp-eyebrow">🛠️ Our Expertise</p>
+          <h2>All Services</h2>
+        </div>
         <div className="journey-flow-wrap">
           <div className="journey-cards">
             {INFO_CARDS.map((card, idx) => (
@@ -23,7 +27,16 @@ export default function InfoCards() {
                 }}
                 viewport={{ once: true, margin: "-50px" }}
               >
-                <Link href={card.link} className={`info-card-link ${card.accent}-accent`}>
+                <Link 
+                  href={card.link} 
+                  className={`info-card-link ${card.accent}-accent`}
+                  onClick={(e) => {
+                    if (card.link === '/contact') {
+                      e.preventDefault();
+                      window.dispatchEvent(new CustomEvent('open-contact-modal', { detail: { type: 'booking' } }));
+                    }
+                  }}
+                >
                   <div className="info-card-inner">
                     <div className="card-top">
                       <span className="card-icon-pill">{card.icon}</span>

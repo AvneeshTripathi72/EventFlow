@@ -1,13 +1,13 @@
 .why-choose-page {
-  padding: 120px 0;
-  background: #313131;
+  padding: 60px 0;
+  background: #0a0a0a;
   color: #fff;
   min-height: 100vh;
 }
 
 .why-choose-header {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 
 .accent-tag {

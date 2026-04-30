@@ -1,8 +1,12 @@
 .hp-journey-section {
-  padding: 120px 0;
-  background: #313131;
+  padding: 60px 0;
+  background: #0a0a0a;
   position: relative;
   overflow: hidden;
+}
+
+.hp-journey-section .hp-section-head {
+  margin-bottom: 40px;
 }
 
 .journey-flow-wrap {

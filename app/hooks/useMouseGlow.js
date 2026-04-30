@@ -21,15 +21,13 @@ export function useMouseGlow() {
       const dx = targetX - currentX;
       const dy = targetY - currentY;
       
-      if (Math.abs(dx) > 0.01 || Math.abs(dy) > 0.01) {
-        currentX += dx * 0.085;
-        currentY += dy * 0.085;
+      // Only update if movement is significant (> 0.05%)
+      if (Math.abs(dx) > 0.05 || Math.abs(dy) > 0.05) {
+        currentX += dx * 0.07;
+        currentY += dy * 0.07;
         
-        const nextX = currentX.toFixed(2);
-        const nextY = currentY.toFixed(2);
-        
-        root.style.setProperty('--mx', `${nextX}%`);
-        root.style.setProperty('--my', `${nextY}%`);
+        root.style.setProperty('--mx', `${currentX.toFixed(1)}%`);
+        root.style.setProperty('--my', `${currentY.toFixed(1)}%`);
       }
       
       rafId = globalThis.requestAnimationFrame(tick);

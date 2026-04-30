@@ -112,12 +112,14 @@ export default function FeaturedArtistsSection() {
                   <span>{artist.rating} · {artist.bookings}</span>
                 </div>
                 <div className="hp-feat-book-row">
-                  <Link
-                    href={`/book?artist=${encodeURIComponent(artist.name)}&genre=${encodeURIComponent(artist.genre)}`}
+                  <button
+                    onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal', { 
+                      detail: { type: 'booking', artist: artist.name } 
+                    }))}
                     className="hp-feat-book-btn"
                   >
                     Book This Artist
-                  </Link>
+                  </button>
                   <Link href="/artists" className="hp-feat-view-btn">View Profile</Link>
                 </div>
               </div>
