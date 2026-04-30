@@ -59,7 +59,7 @@
 }
 
 .header-badge {
-  color: #f6b64e;
+  color: #FFE032;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.15em;
@@ -115,7 +115,7 @@
   top: 6px;
   bottom: 6px;
   width: calc(50% - 6px);
-  background: #f6b64e;
+  background: #FFE032;
   border-radius: 12px;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1;
@@ -168,7 +168,7 @@
 .lux-form-group input:focus,
 .lux-form-group select:focus,
 .lux-form-group textarea:focus {
-  border-color: #f6b64e;
+  border-color: #FFE032;
   background: #1a1a1a;
   box-shadow: 0 0 20px rgba(246, 182, 78, 0.05);
 }
@@ -189,7 +189,7 @@
 .btn-submit-premium {
   position: relative;
   width: 100%;
-  background: #f6b64e;
+  background: #FFE032;
   border: none;
   padding: 18px;
   border-radius: 16px;
@@ -236,7 +236,7 @@
 .lux-success-ring {
   width: 80px;
   height: 80px;
-  border: 2px solid #f6b64e;
+  border: 2px solid #FFE032;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -246,7 +246,7 @@
 
 .lux-success-check {
   font-size: 40px;
-  color: #f6b64e;
+  color: #FFE032;
 }
 
 .lux-modal-success h4 {

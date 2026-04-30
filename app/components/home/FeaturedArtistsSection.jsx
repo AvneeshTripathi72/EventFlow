@@ -48,12 +48,11 @@ export default function FeaturedArtistsSection() {
 
   return (
     <FadeSection className="hp-shell hp-block">
-      <div className="hp-feat-head">
-        <div className="hp-section-head">
-          <p className="hp-eyebrow">⭐ Featured Artists</p>
-          <h2>Profiles with genre, bookings, and ratings</h2>
+      <div className="hp-feat-head" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px', marginBottom: '32px' }}>
+        <div className="hp-section-head" style={{ textAlign: 'center', margin: 0 }}>
+          <h2>Featured Artists</h2>
         </div>
-        <div className="hp-feat-actions">
+        <div className="hp-feat-actions" style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
           <Link href="/artists" className="hp-see-all">See all →</Link>
           <div className="hp-feat-controls" aria-label="Featured artists slider controls">
             <button

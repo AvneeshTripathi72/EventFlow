@@ -51,6 +51,10 @@ export default function ContactSection() {
               <label>Email *</label>
               <input type="email" placeholder="your@email.com" required />
             </div>
+            <div className="hp-form-field">
+              <label>Phone *</label>
+              <input type="tel" placeholder="Your phone number" required />
+            </div>
             <motion.button
               type="submit"
               className="hp-btn hp-btn-primary hp-form-submit"

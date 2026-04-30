@@ -58,7 +58,7 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             >
-              Book A <span className="hp-gradient-text accent-text">Musician!</span>
+              Book A <span className="hp-gradient-text accent-text">Musician</span>
               <br />
               For Your <span className="hp-gradient-text accent-text">Grand Event!</span>
             </motion.h1>
@@ -81,11 +81,11 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.45 }}
             >
-              <Link href="/artists" className="hp-btn hp-btn-primary">
+              <button onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal'))} className="hp-btn hp-btn-primary">
                 <span>Book Now</span>
                 <span className="hp-btn-shine" aria-hidden="true" />
-              </Link>
-              <Link href="/book" className="hp-btn hp-btn-ghost">Look Now</Link>
+              </button>
+              <button onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal'))} className="hp-btn hp-btn-ghost">Look Now</button>
             </motion.div>
 
             <motion.div

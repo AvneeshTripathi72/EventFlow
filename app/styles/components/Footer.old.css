@@ -1,5 +1,5 @@
 .lux-footer {
-  background-color: #111111;
+  background-color: #313131;
   color: var(--text-primary);
   padding: 80px 0 40px;
   position: relative;
@@ -46,7 +46,7 @@
 
 .lux-footer-social-link:hover {
   opacity: 1;
-  color: #f6b64e;
+  color: #FFE032;
   transform: translateY(-2px);
 }
 
@@ -75,7 +75,7 @@
 }
 
 .lux-footer-link:hover {
-  color: #f6b64e;
+  color: #FFE032;
 }
 
 .lux-footer-bottom {

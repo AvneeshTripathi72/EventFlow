@@ -77,9 +77,9 @@ export default function Footer() {
               <span><strong>24h</strong> booking response</span>
             </div>
           </div>
-          <Link href="/book" className="lux-footer-hero-cta fx-glow-button">
+          <button onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal'))} className="lux-footer-hero-cta fx-glow-button">
             Start live inquiry
-          </Link>
+          </button>
         </section>
 
 

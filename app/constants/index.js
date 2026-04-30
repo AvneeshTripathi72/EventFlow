@@ -1,7 +1,7 @@
 export const HERO_STATS = [
   { value: 2500, suffix: '+', label: 'Events Celebrated' },
   { value: 1500, suffix: '+', label: 'Verified Artists' },
-  { value: 99,   suffix: '%', label: 'Client Happiness' },
+  { value: 24,   suffix: '/7', label: 'Human Support' },
 ]
 
 export const ARTIST_OF_MONTH = {

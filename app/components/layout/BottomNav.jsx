@@ -8,7 +8,7 @@ import { HomeIcon, ServicesIcon, AboutIcon, ContactIcon } from '@/app/components
  * Individual tab for Bottom Navigation
  */
 function Tab({ path, icon, label, onNavigate, isActive }) {
-  const iconColor = isActive ? '#f6b64e' : '#8a8f98'
+  const iconColor = isActive ? '#FFE032' : '#8a8f98'
 
   return (
     <button
@@ -23,7 +23,7 @@ function Tab({ path, icon, label, onNavigate, isActive }) {
         alignItems: 'center',
         justifyContent: 'center',
         gap: '4px',
-        color: isActive ? '#f6b64e' : '#8a8f98',
+        color: isActive ? '#FFE032' : '#8a8f98',
         padding: '10px 4px 6px',
         cursor: 'pointer',
         WebkitTapHighlightColor: 'transparent',
@@ -82,7 +82,7 @@ export default function BottomNav() {
         }
 
         .booking-bottom-nav .booking-tab-btn.is-active {
-          color: #f6b64e !important;
+          color: #FFE032 !important;
           opacity: 1 !important;
         }
 

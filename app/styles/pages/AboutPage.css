@@ -1,6 +1,6 @@
 .about-page-layout {
   padding-bottom: 120px;
-  background: #111111;
+  background: #313131;
 }
 
 .about-hero {
@@ -29,7 +29,7 @@
 .about-hero-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, transparent 0%, #111111 90%);
+  background: radial-gradient(circle at center, transparent 0%, #313131 90%);
   z-index: 2;
 }
 
@@ -87,7 +87,7 @@
 }
 
 .value-card h3 {
-  color: #f6b64e;
+  color: #FFE032;
   font-size: 24px;
   margin-bottom: 20px;
 }

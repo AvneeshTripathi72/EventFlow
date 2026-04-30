@@ -22,7 +22,7 @@ export default function ServiceCard({ service, index }) {
       <div className="service-content">
         <h3>{service.title}</h3>
         <p>{service.desc}</p>
-        <Link href="/book" className="service-action-btn">Check Availability</Link>
+        <button onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal'))} className="service-action-btn">Check Availability</button>
       </div>
     </motion.article>
   )

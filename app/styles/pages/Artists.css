@@ -49,9 +49,9 @@
 }
 
 .filter-btn.active {
-  background: #f6b64e;
+  background: #FFE032;
   color: #000;
-  border-color: #f6b64e;
+  border-color: #FFE032;
   box-shadow: 0 8px 24px rgba(246, 182, 78, 0.2);
 }
 
@@ -102,7 +102,7 @@
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
-  color: #f6b64e;
+  color: #FFE032;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -161,7 +161,7 @@
   padding: 10px 20px;
   background: transparent;
   border: 1px solid rgba(246, 182, 78, 0.4);
-  color: #f6b64e;
+  color: #FFE032;
   border-radius: 12px;
   font-size: 14px;
   font-weight: 700;
@@ -170,9 +170,9 @@
 }
 
 .artist-book-btn:hover {
-  background: #f6b64e;
+  background: #FFE032;
   color: #000;
-  border-color: #f6b64e;
+  border-color: #FFE032;
   box-shadow: 0 8px 20px rgba(246, 182, 78, 0.3);
 }
 

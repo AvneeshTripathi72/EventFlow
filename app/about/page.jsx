@@ -64,7 +64,7 @@ export default function AboutPage() {
           <h2>Ready to bring your event to life?</h2>
           <p>Trusted by families, couples, and societies for unforgettable live music experiences. Let's make your next event sing!</p>
           <div className="cta-group">
-            <Link href="/book" className="fx-glow-button">Book Your Artist Now</Link>
+            <button onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal'))} className="fx-glow-button">Book Your Artist Now</button>
             <Link href="/artists" className="about-secondary-cta">Explore Talent</Link>
           </div>
         </section>

@@ -4,7 +4,7 @@
 
 :root {
   /* ─── BACKGROUNDS (Unified Dark Grey) ─── */
-  --bg-base:     #111111;
+  --bg-base:     #313131;
   --bg-raised:   #1a1a1a;
   --bg-overlay:  #222222;
   --bg-subtle:   #2a2a2a;
@@ -14,30 +14,30 @@
   /* ─── BORDERS (Refined Accents) ─── */
   --border-faint:   rgba(255,255,255,0.06);
   --border-subtle:  rgba(255,255,255,0.12);
-  --border-default: rgba(246,182,78,0.2);
-  --border-strong:  rgba(246,182,78,0.4);
-  --border-focus:   #f6b64e;
+  --border-default: rgba(255,224,50,0.2);
+  --border-strong:  rgba(255,224,50,0.4);
+  --border-focus:   #FFE032;
 
   /* ─── TEXT ─── */
   --text-primary:   #ffffff;
   --text-secondary: #bfaea1;
   --text-tertiary:  #8b7e74;
   --text-inverse:   #0a0a0a;
-  --text-brand:     #f6b64e;
+  --text-brand:     #FFE032;
 
   /* ─── BRAND — Magnevents Signature Palette ─── */
-  --brand-gold:       #f6b64e;
-  --brand-gold-lt:    #ffce7b;
-  --brand-gold-dk:    #d99a3a;
-  --brand-ruby:       #c02424;
-  --brand-ruby-lt:    #e02a2a;
-  --brand-ruby-dk:    #8b0000;
+  --brand-gold:       #FFE032;
+  --brand-gold-lt:    #FFE032;
+  --brand-gold-dk:    #EECE3B;
+  --brand-ruby:       #D65050;
+  --brand-ruby-lt:    #D65050;
+  --brand-ruby-dk:    #D65050;
   --brand-pink:        #ffb6c1;
   --glow-pink:         rgba(255, 182, 193, 0.25);
 
   /* ─── GLOW EFFECTS ─── */
-  --glow-gold:    rgba(246,182,78,0.15);
-  --glow-ruby:    rgba(192,36,36,0.2);
+  --glow-gold:    rgba(255,224,50,0.15);
+  --glow-ruby:    rgba(214,80,80,0.2);
   --glow-white:   rgba(255,255,255,0.05);
 
   /* ─── SEMANTIC ─── */
@@ -100,7 +100,7 @@
   --shadow-md:      0 4px 12px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.6);
   --shadow-lg:      0 12px 32px rgba(0,0,0,0.6), 0 4px 8px rgba(0,0,0,0.4);
   --shadow-glow-sm: 0 0 12px var(--glow-saffron);
-  --shadow-glow-md: 0 0 32px var(--glow-saffron), 0 0 64px rgba(249,115,22,0.08);
+  --shadow-glow-md: 0 0 32px var(--glow-saffron), 0 0 64px rgba(238,206,59,0.08);
 
   /* ─── MOTION ─── */
   --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
@@ -133,7 +133,7 @@
 
 /* ── UTILITIES ── */
 .text-gradient {
-  background: linear-gradient(90deg, #ffb347, #ffcc33);
+  background: linear-gradient(90deg, #FFE032, #EECE3B);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
@@ -147,7 +147,7 @@
 /* Applied when <html data-theme="light"> */
 [data-theme="light"] {
   /* Backgrounds - Shifted to a softer dark instead of white */
-  --bg-base:     #0c0b0a;
+  --bg-base:     #313131;
   --bg-raised:   #161514;
   --bg-overlay:  #1e1d1c;
   --bg-subtle:   #2a2826;
@@ -159,7 +159,7 @@
   --border-subtle:  rgba(255,255,255,0.08);
   --border-default: rgba(255,255,255,0.12);
   --border-strong:  rgba(255,255,255,0.20);
-  --border-focus:   rgba(246,182,78,0.60);
+  --border-focus:   rgba(255,224,50,0.60);
 
   /* Text */
   --text-primary:   #ffffff;
@@ -209,7 +209,7 @@ body {
   overflow-x: hidden;
 }
 
-::selection { background: rgba(249,115,22,0.25); color: var(--text-primary); }
+::selection { background: rgba(238,206,59,0.25); color: var(--text-primary); }
 
 /* Hide scrollbar globally */
 html, body {
@@ -411,8 +411,8 @@ input[type="password"]:focus,
 input[type="number"]:focus,
 input[type="search"]:focus,
 textarea:focus {
-  border-color: rgba(249,115,22,0.50);
-  box-shadow:   0 0 0 3px rgba(249,115,22,0.10);
+  border-color: rgba(238,206,59,0.50);
+  box-shadow:   0 0 0 3px rgba(238,206,59,0.10);
 }
 
 select {
@@ -433,8 +433,8 @@ select {
   background-position: right 12px center;
 }
 select:focus {
-  border-color: rgba(249,115,22,0.50);
-  box-shadow:   0 0 0 3px rgba(249,115,22,0.10);
+  border-color: rgba(238,206,59,0.50);
+  box-shadow:   0 0 0 3px rgba(238,206,59,0.10);
 }
 
 /* ────────────────────────────────────────────────────────
