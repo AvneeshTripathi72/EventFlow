@@ -1,0 +1,144 @@
+.how-to-book-page {
+  padding: 120px 0 80px;
+  background: var(--bg-main);
+  color: var(--text-main);
+  min-height: 100vh;
+  position: relative;
+}
+
+.how-to-book-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1000px;
+  height: 500px;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 224, 50, 0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.how-header {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+}
+
+.how-header h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: var(--spacing-3);
+}
+
+.how-header p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.step-connector {
+  position: absolute;
+  top: 60px;
+  bottom: -32px;
+  width: 2px;
+  background: var(--brand-primary);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.step-item.left .step-connector {
+  right: -1px;
+}
+
+.step-item.right .step-connector {
+  left: -1px;
+}
+
+@media (max-width: 768px) {
+  .step-connector {
+    left: 30px !important;
+    right: auto !important;
+  }
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  position: relative;
+  width: 50%;
+}
+
+.step-item:last-child {
+  margin-bottom: 0;
+}
+
+.step-item.left {
+  padding-right: 60px;
+  text-align: right;
+  flex-direction: row-reverse;
+  margin-right: 50%;
+}
+
+.step-item.right {
+  padding-left: 60px;
+  margin-left: 50%;
+}
+
+.step-blob {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--brand-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  position: absolute;
+  z-index: 2;
+  box-shadow: var(--shadow-glow);
+}
+
+.step-item.left .step-blob {
+  right: -30px;
+}
+
+.step-item.right .step-blob {
+  left: -30px;
+}
+
+.step-num {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.step-content h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.step-content p {
+  color: #8a8f98;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .timeline-line {
+    left: 30px;
+  }
+  .step-item {
+    width: 100%;
+    margin-left: 0 !important;
+    padding-left: 80px !important;
+    padding-right: 0 !important;
+    text-align: left !important;
+    flex-direction: row !important;
+  }
+  .step-item.left .step-blob, .step-item.right .step-blob {
+    left: 0;
+  }
+}

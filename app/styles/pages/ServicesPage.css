@@ -1,0 +1,112 @@
+.services-page-layout {
+  padding-top: 140px;
+  padding-bottom: 100px;
+  background: #0a0a0a;
+  min-height: 100vh;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.services-header h1 {
+  font-family: var(--font-display, serif);
+  font-size: clamp(36px, 5vw, 64px);
+  margin: 16px 0;
+  color: #fff;
+}
+
+.services-header p {
+  color: #8a8f98;
+  font-size: 18px;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.service-item-card {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  background: rgba(20, 20, 20, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.service-media {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.service-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.service-item-card:hover .service-media img {
+  transform: scale(1.1);
+}
+
+.service-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+.service-content {
+  padding: 40px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-content h3 {
+  font-size: 28px;
+  margin-bottom: 16px;
+  color: #fff;
+  font-family: var(--font-display);
+}
+
+.service-content p {
+  font-size: 16px;
+  color: #8a8f98;
+  margin-bottom: 32px;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.service-action-btn {
+  width: fit-content;
+  padding: 14px 28px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.service-action-btn:hover {
+  background: #FFE032;
+  color: #000;
+  border-color: #FFE032;
+  box-shadow: 0 10px 20px rgba(255, 224, 50, 0.2);
+}
+
+@media (max-width: 900px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .service-content { padding: 30px; }
+  .services-header h1 { font-size: 40px; }
+}
