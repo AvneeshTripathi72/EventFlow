@@ -69,7 +69,7 @@ button { font-family: var(--font-body); cursor: pointer; border: none; outline: 
 /* Clean, unified Layout Classes */
 .lux-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 var(--spacing-3);
 }
