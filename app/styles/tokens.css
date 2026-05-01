@@ -202,7 +202,7 @@ html {
 }
 
 body {
-  background: var(--bg-base);
+  background: radial-gradient(circle at top right, #0a0a1a 0%, #050505 100%);
   color: var(--text-primary);
   font-family: var(--font-sans);
   font-size: var(--text-base);
