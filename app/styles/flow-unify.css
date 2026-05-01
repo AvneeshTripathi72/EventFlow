@@ -7,8 +7,8 @@
 
   --border-faint: rgba(255, 255, 255, 0.06);
   --border-subtle: rgba(255, 255, 255, 0.12);
-  --border-default: rgba(246, 182, 78, 0.2);
-  --border-strong: rgba(246, 182, 78, 0.4);
+  --border-default: rgba(255, 224, 50, 0.2);
+  --border-strong: rgba(255, 224, 50, 0.4);
   --border-focus: #FFE032;
 
   --text-primary: #ffffff;
@@ -211,7 +211,7 @@
 
 .flow-unify-shell .bottom-nav [aria-label='AI Search'] {
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 8px 18px rgba(246, 182, 78, 0.22), 0 0 0 3px #0a0a0a !important;
+  box-shadow: 0 8px 18px rgba(255, 224, 50, 0.22), 0 0 0 3px #0a0a0a !important;
 }
 
 .flow-unify-shell .bottom-nav-spacer {
@@ -302,7 +302,7 @@
 
 @keyframes flowGlow {
   0%, 100% { filter: brightness(1); }
-  50%       { filter: brightness(1.15) drop-shadow(0 0 8px rgba(238,206,59,0.5)); }
+  50%       { filter: brightness(1.15) drop-shadow(0 0 8px rgba(255, 224, 50, 0.5)); }
 }
 
 @keyframes flowUnifyPageIn {

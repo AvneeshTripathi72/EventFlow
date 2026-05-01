@@ -15,7 +15,7 @@
   left: 0;
   right: 0;
   height: 600px;
-  background: radial-gradient(circle at 50% -20%, rgba(246, 182, 78, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% -20%, rgba(255, 224, 50, 0.15) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -75,14 +75,14 @@
 .pricing-card:hover {
   transform: translateY(-12px);
   background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(246, 182, 78, 0.3);
+  border-color: rgba(255, 224, 50, 0.3);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
 }
 
 .pricing-card.is-popular {
-  border-color: rgba(246, 182, 78, 0.5);
-  background: rgba(246, 182, 78, 0.05);
-  box-shadow: 0 20px 50px rgba(246, 182, 78, 0.1);
+  border-color: rgba(255, 224, 50, 0.5);
+  background: rgba(255, 224, 50, 0.05);
+  box-shadow: 0 20px 50px rgba(255, 224, 50, 0.1);
 }
 
 .popular-badge {
@@ -167,7 +167,7 @@
 .btn-primary {
   background: linear-gradient(90deg, #FFE032, #EECE3B);
   color: #000;
-  box-shadow: 0 10px 20px rgba(246, 182, 78, 0.2);
+  box-shadow: 0 10px 20px rgba(255, 224, 50, 0.2);
 }
 
 .btn-primary:hover {

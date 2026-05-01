@@ -102,7 +102,7 @@
   background: #FFE032;
   color: #000;
   border-color: #FFE032;
-  box-shadow: 0 10px 20px rgba(246, 182, 78, 0.2);
+  box-shadow: 0 10px 20px rgba(255, 224, 50, 0.2);
 }
 
 @media (max-width: 900px) {

@@ -10,7 +10,7 @@
   --hp-brand: #FFE032;
   --hp-brand-deep: #EECE3B;
   --hp-card: rgba(18, 17, 16, 0.7);
-  --hp-card-border: rgba(246, 182, 78, 0.15);
+  --hp-card-border: rgba(255, 224, 50, 0.15);
   --hp-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
   --hp-space-section: 12px;
   --hp-space-head: 4px;
@@ -1758,7 +1758,7 @@
 
 .lux-pricing-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(246, 182, 78, 0.3);
+  border-color: rgba(255, 224, 50, 0.3);
 }
 
 .lux-pricing-card.is-featured {
@@ -2722,7 +2722,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 70% 30%, rgba(246, 182, 78, 0.1), transparent 60%);
+  background: radial-gradient(circle at 70% 30%, rgba(255, 224, 50, 0.1), transparent 60%);
   pointer-events: none;
 }
 
@@ -2745,7 +2745,7 @@
   position: absolute;
   top: 40px;
   left: 40px;
-  background: rgba(246, 182, 78, 0.9);
+  background: rgba(255, 224, 50, 0.9);
   color: #000;
   padding: 8px 20px;
   border-radius: 99px;
@@ -2754,7 +2754,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  box-shadow: 0 10px 20px rgba(246, 182, 78, 0.3);
+  box-shadow: 0 10px 20px rgba(255, 224, 50, 0.3);
   z-index: 5;
 }
 
@@ -2809,8 +2809,8 @@
 }
 
 .hp-aom-stat-row.is-exclusive {
-  background: rgba(246, 182, 78, 0.05);
-  border-color: rgba(246, 182, 78, 0.2);
+  background: rgba(255, 224, 50, 0.05);
+  border-color: rgba(255, 224, 50, 0.2);
 }
 
 .hp-aom-rating {
@@ -2928,7 +2928,7 @@
 
 .hp-step-icon {
   font-size: 32px;
-  filter: drop-shadow(0 0 10px rgba(246, 182, 78, 0.3));
+  filter: drop-shadow(0 0 10px rgba(255, 224, 50, 0.3));
 }
 
 .hp-step-card h3 {
@@ -3040,11 +3040,11 @@
 
 .hp-why-card:hover {
   transform: translateY(-10px);
-  border-color: rgba(246, 182, 78, 0.4);
+  border-color: rgba(255, 224, 50, 0.4);
   box-shadow: 
     0 30px 60px rgba(0, 0, 0, 0.6),
-    0 0 40px rgba(246, 182, 78, 0.15),
-    inset 0 0 0 1px rgba(246, 182, 78, 0.1);
+    0 0 40px rgba(255, 224, 50, 0.15),
+    inset 0 0 0 1px rgba(255, 224, 50, 0.1);
 }
 
 .hp-why-icon {

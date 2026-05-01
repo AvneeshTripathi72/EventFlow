@@ -143,7 +143,7 @@
 }
 
 .text-glow {
-  text-shadow: 0 0 15px rgba(246, 182, 78, 0.3);
+  text-shadow: 0 0 15px rgba(255, 224, 50, 0.3);
 }
 
 /* ─── LIGHT THEME OVERRIDES ─── */
@@ -202,7 +202,7 @@ html {
 }
 
 body {
-  background: var(--bg-base);
+  background: radial-gradient(circle at top right, #0a0a1a 0%, #050505 100%);
   color: var(--text-primary);
   font-family: var(--font-sans);
   font-size: var(--text-base);
@@ -457,7 +457,7 @@ select:focus {
   position:      relative;
   overflow:      hidden;
   transition:    all 0.3s var(--ease-spring);
-  box-shadow:    0 4px 15px rgba(246, 182, 78, 0.25);
+  box-shadow:    0 4px 15px rgba(255, 224, 50, 0.25);
   display:       inline-flex;
   align-items:   center;
   justify-content: center;
@@ -465,7 +465,7 @@ select:focus {
 
 .btn-primary:hover {
   transform:     translateY(-2px) scale(1.03);
-  box-shadow:    0 8px 25px rgba(246, 182, 78, 0.4);
+  box-shadow:    0 8px 25px rgba(255, 224, 50, 0.4);
   filter:        brightness(1.1);
 }
 

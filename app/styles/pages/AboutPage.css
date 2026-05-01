@@ -83,7 +83,7 @@
 
 .value-card:hover {
   background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(246, 182, 78, 0.2);
+  border-color: rgba(255, 224, 50, 0.2);
 }
 
 .value-card h3 {
