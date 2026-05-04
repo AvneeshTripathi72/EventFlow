@@ -226,7 +226,7 @@ export const HOW_TO_BOOK_STEPS = [
     title: "Share Your Event", 
     desc: "Tell us about your occasion via form, call, or WhatsApp.", 
     icon: "📝",
-    color: "#00ff41"
+    color: "#FFE032"
   },
   { 
     title: "Get Handpicked Options", 
@@ -238,7 +238,7 @@ export const HOW_TO_BOOK_STEPS = [
     title: "Confirm & Book", 
     desc: "Secure your favorite artist with a simple booking process.", 
     icon: "✅",
-    color: "#00ff41"
+    color: "#FFE032"
   },
   { 
     title: "Relax & Enjoy", 
@@ -291,7 +291,7 @@ export const PREMIUM_CARDS = [
     desc: 'Carefully selected singers, bands, and musicians based on event style and budget.',
     icon: '💎',
     path: '/why-choose',
-    color: 'var(--matrix-green)'
+    color: 'var(--brand-gold)'
   },
   {
     id: 'testimonials',
@@ -309,7 +309,7 @@ export const PREMIUM_CARDS = [
     desc: 'From sharing your event details to enjoying the performance—hassle-free.',
     icon: '🎵',
     path: '/how-to-book',
-    color: 'var(--matrix-green)'
+    color: 'var(--brand-gold)'
   },
   {
     id: 'contact',

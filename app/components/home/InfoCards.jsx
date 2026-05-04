@@ -9,7 +9,6 @@ export default function InfoCards() {
     <section className="hp-journey-section">
       <div className="lux-container">
         <div className="hp-section-head">
-          <p className="hp-eyebrow">🛠️ Our Expertise</p>
           <h2>All Services</h2>
         </div>
         <div className="journey-flow-wrap">

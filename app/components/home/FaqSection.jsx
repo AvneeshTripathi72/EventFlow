@@ -15,7 +15,6 @@ export default function FaqSection({
   return (
     <FadeSection className="hp-shell hp-block hp-faqs">
       <div className="hp-section-head">
-        <p className="hp-eyebrow">{eyebrow}</p>
         <h2 className={titleGradient ? 'text-gradient' : ''}>{title}</h2>
       </div>
       <div className="hp-faq-list">

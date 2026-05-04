@@ -1,7 +1,7 @@
 /* ── Pricing Page — Premium Dark Luxury Theme ─────────────────────────── */
 .pricing-pg {
   min-height: 100vh;
-  background: #0a0a0a;
+  background: transparent;
   color: #fff;
   padding: 60px 24px 80px;
   position: relative;
@@ -15,7 +15,7 @@
   left: 0;
   right: 0;
   height: 600px;
-  background: radial-gradient(circle at 50% -20%, rgba(255, 224, 50, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% -20%, var(--glow-red) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -62,21 +62,22 @@
 
 .pricing-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
   padding: 48px 32px;
   display: flex;
   flex-direction: column;
-  transition: all 400ms cubic-bezier(0.22, 1, 0.36, 1);
-  backdrop-filter: blur(10px);
+  transition: var(--trans-normal);
+  box-shadow: var(--shadow-premium);
 }
 
 .pricing-card:hover {
   transform: translateY(-12px);
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 224, 50, 0.3);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  background: var(--bg-raised);
+  border-color: var(--brand-ruby);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), 0 0 20px var(--glow-red);
 }
 
 .pricing-card.is-popular {
@@ -165,14 +166,14 @@
 }
 
 .btn-primary {
-  background: linear-gradient(90deg, #FFE032, #EECE3B);
-  color: #000;
-  box-shadow: 0 10px 20px rgba(255, 224, 50, 0.2);
+  background: linear-gradient(135deg, var(--brand-ruby) 0%, #8b2d2d 100%);
+  color: #fff;
+  box-shadow: 0 10px 20px var(--glow-red);
 }
 
 .btn-primary:hover {
-  filter: brightness(1.1);
-  transform: scale(1.02);
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px var(--glow-red), 0 0 15px var(--brand-ruby);
 }
 
 .btn-outline {

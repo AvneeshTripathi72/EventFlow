@@ -47,33 +47,35 @@ export default function FeaturedArtistsSection() {
   }, [pauseFeatured])
 
   return (
-    <FadeSection className="hp-shell hp-block">
-      <div className="hp-feat-head" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px', marginBottom: '32px' }}>
-        <div className="hp-section-head" style={{ textAlign: 'center', margin: 0 }}>
+    <FadeSection className="hp-shell hp-block hp-featured-section">
+      <div className="hp-feat-head-v2">
+        <div className="hp-section-head">
           <h2>Featured Artists</h2>
         </div>
-        <div className="hp-feat-actions" style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-          <Link href="/artists" className="hp-see-all">See all →</Link>
-          <div className="hp-feat-controls" aria-label="Featured artists slider controls">
+        
+        <div className="hp-feat-actions-row">
+          <Link href="/artists" className="hp-see-all-v2">See all →</Link>
+          <div className="hp-feat-controls-v2">
             <button
               type="button"
-              className="lux-arrow-btn is-left"
+              className="lux-arrow-mini is-left"
               onClick={() => moveFeatured(-1)}
-              aria-label="Previous featured artists"
+              aria-label="Previous"
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
             </button>
             <button
               type="button"
-              className="lux-arrow-btn"
+              className="lux-arrow-mini"
               onClick={() => moveFeatured(1)}
-              aria-label="Next featured artists"
+              aria-label="Next"
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
           </div>
         </div>
       </div>
+
       <div
         className="hp-feat-carousel"
         ref={featuredRef}
@@ -90,8 +92,8 @@ export default function FeaturedArtistsSection() {
             viewport={{ once: true, margin: '-20px' }}
             transition={{ duration: 0.45, delay: (i % 3) * 0.1 }}
           >
-            <TiltCard className="hp-feat-card">
-              <div className="hp-feat-img-wrap">
+            <TiltCard className="hp-feat-card-v2">
+              <div className="hp-feat-img-wrap-v2">
                 <Image 
                   src={artist.image} 
                   alt={artist.name} 
@@ -99,34 +101,37 @@ export default function FeaturedArtistsSection() {
                   height={400} 
                   style={{ objectFit: 'cover' }}
                 />
-                <div className="hp-feat-overlay">
-                  <span className="hp-feat-live-pill">Live preview</span>
+                <div className="hp-feat-overlay-v2">
+                  <span className="hp-live-badge">LIVE PREVIEW</span>
                 </div>
               </div>
-              <div className="hp-feat-info">
-                <span className="hp-feat-genre">{artist.genre}</span>
-                <h3>{artist.name}</h3>
-                <p className="hp-feat-location">{artist.city}</p>
-                <div className="hp-feat-meta">
+              <div className="hp-feat-info-v2">
+                <span className="hp-feat-genre-v2">{artist.genre}</span>
+                <h3 className="hp-feat-name-v2">{artist.name}</h3>
+                <span className="hp-feat-loc-v2">{artist.location || 'Jaipur'}</span>
+                
+                <div className="hp-feat-rating-v2">
                   <Stars count={Math.round(Number(artist.rating))} />
-                  <span>{artist.rating} · {artist.bookings}</span>
+                  <span className="hp-feat-score-v2">{artist.rating} · 146 bookings</span>
                 </div>
-                <div className="hp-feat-book-row">
+
+                <div className="hp-feat-btn-grid">
                   <button
                     onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal', { 
                       detail: { type: 'booking', artist: artist.name } 
-                    }))}
-                    className="hp-feat-book-btn"
+                     }))}
+                    className="hp-btn-book-v2"
                   >
-                    Book This Artist
+                    BOOK THIS ARTIST
                   </button>
-                  <Link href="/artists" className="hp-feat-view-btn">View Profile</Link>
+                  <Link href="/artists" className="hp-btn-view-v2">VIEW PROFILE</Link>
                 </div>
               </div>
             </TiltCard>
           </motion.div>
         ))}
       </div>
+
     </FadeSection>
   )
 }

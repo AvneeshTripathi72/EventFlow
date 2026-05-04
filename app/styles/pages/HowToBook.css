@@ -1,6 +1,6 @@
 .how-to-book-page {
   padding: 120px 0 80px;
-  background: var(--bg-main);
+  background: transparent;
   color: var(--text-main);
   min-height: 100vh;
   position: relative;
@@ -15,7 +15,7 @@
   width: 100%;
   max-width: 1000px;
   height: 500px;
-  background: radial-gradient(circle at 50% 0%, rgba(255, 224, 50, 0.15), transparent 70%);
+  background: radial-gradient(circle at 50% 0%, var(--glow-red), transparent 70%);
   pointer-events: none;
 }
 
@@ -40,8 +40,8 @@
   top: 60px;
   bottom: -32px;
   width: 2px;
-  background: var(--brand-primary);
-  opacity: 0.3;
+  background: var(--brand-ruby);
+  opacity: 0.2;
   z-index: 1;
 }
 
@@ -89,14 +89,15 @@
   height: 60px;
   border-radius: 50%;
   background: var(--bg-card);
-  border: 2px solid var(--brand-primary);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--brand-ruby);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24px;
   position: absolute;
   z-index: 2;
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 0 20px var(--glow-red);
 }
 
 .step-item.left .step-blob {

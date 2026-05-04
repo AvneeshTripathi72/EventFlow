@@ -36,17 +36,29 @@ export default function CategoriesSection() {
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               >
                 {ARTIST_CATEGORIES.slice(catPage * catPerPage, catPage * catPerPage + catPerPage).map((cat, i) => (
-                  <Link key={cat.label} href={`/artists?category=${cat.query}`} className="hp-cat-card">
-                    <div className="hp-cat-img-wrap">
-                      <Image 
-                        src={cat.image} 
-                        alt={cat.label} 
-                        fill
-                        sizes="(max-width: 768px) 50vw, 25vw"
-                        style={{ objectFit: 'cover' }}
-                      />
+                  <Link key={cat.label} href={`/artists?category=${cat.query}`} className="hp-cat-card-v2">
+                    <div className="hp-cat-avatar-ring">
+                      <div className="hp-cat-img-wrapper">
+                        <Image 
+                          src={cat.image} 
+                          alt={cat.label} 
+                          fill
+                          sizes="200px"
+                          style={{ objectFit: 'cover' }}
+                        />
+                      </div>
+                      <div className="hp-cat-note-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M9 18V5l12-2v13" />
+                          <circle cx="6" cy="18" r="3" />
+                          <circle cx="18" cy="16" r="3" />
+                        </svg>
+                      </div>
                     </div>
-                    <span className="hp-cat-label">{cat.label.toUpperCase()}</span>
+                    <div className="hp-cat-info">
+                      <span className="hp-cat-label-v2">{cat.label.toUpperCase()}</span>
+                      <span className="hp-cat-sub-label">Top Talent</span>
+                    </div>
                   </Link>
                 ))}
               </motion.div>
