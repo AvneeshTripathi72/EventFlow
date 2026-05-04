@@ -224,6 +224,11 @@
   background-position: right 16px center;
 }
 
+.lux-form-group select option {
+  background: #111111;
+  color: #ffffff;
+}
+
 /* Sky Blue Overrides for Register */
 .lux-modal-content.register .header-badge {
   color: #00d4ff;
