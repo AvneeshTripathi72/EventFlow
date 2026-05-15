@@ -122,7 +122,7 @@ export default function ContactModal({ isOpen, onClose, initialType = 'booking',
                 <div className="lux-form-group">
                   <label>Name</label>
                   <input 
-                    type="text" required placeholder="John Doe"
+                    type="text" required placeholder="e.g. Arjun Sharma"
                     value={formData.name}
                     onChange={e => setFormData({...formData, name: e.target.value})}
                   />
@@ -130,7 +130,7 @@ export default function ContactModal({ isOpen, onClose, initialType = 'booking',
                 <div className="lux-form-group">
                   <label>Phone no.</label>
                   <input 
-                    type="tel" required placeholder="+91"
+                    type="tel" required placeholder="+91 9XXX-XXXXXX"
                     value={formData.phone}
                     onChange={e => setFormData({...formData, phone: e.target.value})}
                   />
@@ -149,7 +149,7 @@ export default function ContactModal({ isOpen, onClose, initialType = 'booking',
                 <div className="lux-form-group">
                   <label>Event Type</label>
                   <input 
-                    type="text" required placeholder="Wedding, Corporate, Concert..."
+                    type="text" required placeholder="Wedding, Sangeet, Corporate..."
                     value={formData.eventType}
                     onChange={e => setFormData({...formData, eventType: e.target.value})}
                   />
@@ -168,7 +168,7 @@ export default function ContactModal({ isOpen, onClose, initialType = 'booking',
                 <div className="lux-form-group">
                   <label>Location</label>
                   <input 
-                    type="text" required placeholder="City, Venue..."
+                    type="text" required placeholder="Delhi, Mumbai, Lucknow..."
                     value={formData.location}
                     onChange={e => setFormData({...formData, location: e.target.value})}
                   />

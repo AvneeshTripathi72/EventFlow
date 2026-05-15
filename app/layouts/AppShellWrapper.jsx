@@ -21,7 +21,7 @@ export function AppShellWrapper({ children }) {
   // Initialize interactive background glow effect
   useMouseGlow();
 
-  const routeTransitionClass = ['/artists', '/services', '/gallery', '/events', '/pricing', '/book', '/about', '/contact', '/search', '/markets']
+  const routeTransitionClass = ['/artists', '/services', '/gallery', '/events', '/pricing', '/book', '/blog-post', '/contact', '/search', '/markets']
     .includes(pathname)
     ? 'route-showcase'
     : 'route-default';

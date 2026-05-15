@@ -150,7 +150,7 @@ export const NAV_LINKS = [
   },
   { label: 'Pricing', path: '/pricing' },
   { label: 'Services', path: '/services' },
-  { label: 'Blog Post', path: '/about' },
+  { label: 'Blog Post', path: '/blog-post' },
 ]
 
 export const ARTISTS_CAT_FILTER = ['All', 'Singers', 'Bands', 'DJs', 'Instrumentalists', 'Stage Shows']

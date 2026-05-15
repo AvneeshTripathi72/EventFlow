@@ -23,7 +23,7 @@ const EXPLORE_LINKS = [
 ]
 
 const COMPANY_LINKS = [
-  ['Blog Post', '/about'],
+  ['Blog Post', '/blog-post'],
   ['Contact Us', '/contact'],
   ['Become an Artist', '/onboarding'],
   ['Booking Support', '/book'],
