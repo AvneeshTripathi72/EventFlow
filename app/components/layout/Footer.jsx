@@ -23,7 +23,7 @@ const EXPLORE_LINKS = [
 ]
 
 const COMPANY_LINKS = [
-  ['About Magnevents', '/about'],
+  ['Blog Post', '/about'],
   ['Contact Us', '/contact'],
   ['Become an Artist', '/onboarding'],
   ['Booking Support', '/book'],

@@ -21,9 +21,7 @@ export default function WhyChoosePage() {
           animate={{ opacity: 1, y: 0 }}
           className="why-choose-header"
         >
-          <span className="accent-tag">EXCELLENCE</span>
-          <h1>Why Choose <span className="text-gradient">Magnevents?</span></h1>
-          <p>Your Trusted Partner</p>
+          <h1>💎 Why Choose <span className="text-gradient">Magnevents?</span></h1>
         </motion.div>
 
         <div className="why-choose-grid">

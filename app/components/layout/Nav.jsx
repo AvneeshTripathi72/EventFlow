@@ -38,6 +38,7 @@ export default function Nav() {
   const [query, setQuery] = useState('');
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [modalType, setModalType] = useState('booking');
+  const [selectedArtist, setSelectedArtist] = useState('');
   
   const searchRef = useRef(null);
   const scrolled = useScrolled(20);
@@ -50,6 +51,8 @@ export default function Nav() {
   useEffect(() => {
     const handleOpenModal = (e) => {
       if (e.detail?.type) setModalType(e.detail.type);
+      if (e.detail?.artist) setSelectedArtist(e.detail.artist);
+      else setSelectedArtist('');
       setContactModalOpen(true);
       setMenuOpen(false);
     };
@@ -67,6 +70,7 @@ export default function Nav() {
 
   const openContactModal = (type) => {
     setModalType(type);
+    setSelectedArtist('');
     setContactModalOpen(true);
   };
 
@@ -112,7 +116,7 @@ export default function Nav() {
 
             <button 
               onClick={() => window.dispatchEvent(new CustomEvent('open-register-modal'))} 
-              className="lux-nav-cta"
+              className="lux-nav-cta secondary"
             >
               Artist Register
             </button>
@@ -148,6 +152,7 @@ export default function Nav() {
         isOpen={contactModalOpen} 
         onClose={() => setContactModalOpen(false)} 
         initialType={modalType}
+        initialArtist={selectedArtist}
       />
     </>
   );

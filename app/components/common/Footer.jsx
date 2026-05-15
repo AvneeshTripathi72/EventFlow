@@ -59,7 +59,7 @@ export default function Footer() {
           <div className="lux-footer-col">
             <h4>Company</h4>
             <ul className="lux-footer-links">
-              <li><Link href="/about" className="lux-footer-link">Our Story</Link></li>
+              <li><Link href="/about" className="lux-footer-link">Blog Post</Link></li>
               <li><Link href="/services" className="lux-footer-link">Services</Link></li>
               <li><Link href="/why-choose" className="lux-footer-link">Why Choose Us</Link></li>
               <li><button type="button" onClick={(e) => triggerModal(e, 'contact')} className="lux-footer-link" style={{ textAlign: 'left', width: '100%', padding: 0 }}>Contact Support</button></li>
@@ -69,7 +69,7 @@ export default function Footer() {
           <div className="lux-footer-col">
             <h4>Resources</h4>
             <ul className="lux-footer-links">
-              <li><Link href="/faq" className="lux-footer-link">Help Center</Link></li>
+              <li><span className="lux-footer-link" style={{ cursor: 'default', opacity: 0.5 }}>Help Center</span></li>
               <li><Link href="/testimonials" className="lux-footer-link">Client Reviews</Link></li>
               <li><Link href="/search" className="lux-footer-link">Search Site</Link></li>
               <li><button type="button" onClick={(e) => triggerModal(e, 'booking')} className="lux-footer-link" style={{ textAlign: 'left', width: '100%', padding: 0 }}>Instant Booking</button></li>
@@ -84,9 +84,9 @@ export default function Footer() {
             © {currentYear} Magnevents. All rights reserved. Designed for Excellence.
           </div>
           <div className="lux-footer-legal">
-            <Link href="/terms">Terms</Link>
-            <Link href="/privacy">Privacy</Link>
-            <Link href="/cookies">Cookies</Link>
+            <span style={{ cursor: 'default', opacity: 0.5 }}>Terms</span>
+            <span style={{ cursor: 'default', opacity: 0.5 }}>Privacy</span>
+            <span style={{ cursor: 'default', opacity: 0.5 }}>Cookies</span>
           </div>
         </div>
       </div>

@@ -10,13 +10,30 @@ export const bookingService = {
    * @returns {Promise<Object>}
    */
   submitRequest: async (formData) => {
-    // Simulate API submission
     console.log("Submitting form data to server:", formData);
-    await new Promise(resolve => setTimeout(resolve, 1500));
     
-    return {
-      success: true,
-      message: "Submission received successfully."
-    };
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit form');
+      }
+
+      return {
+        success: true,
+        message: result.message || "Submission received successfully."
+      };
+    } catch (error) {
+      console.error("Booking service error:", error);
+      throw error;
+    }
   }
 };

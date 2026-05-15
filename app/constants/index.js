@@ -150,7 +150,7 @@ export const NAV_LINKS = [
   },
   { label: 'Pricing', path: '/pricing' },
   { label: 'Services', path: '/services' },
-  { label: 'About Us', path: '/about' },
+  { label: 'Blog Post', path: '/about' },
 ]
 
 export const ARTISTS_CAT_FILTER = ['All', 'Singers', 'Bands', 'DJs', 'Instrumentalists', 'Stage Shows']
@@ -251,7 +251,7 @@ export const HOW_TO_BOOK_STEPS = [
 export const INFO_CARDS = [
   {
     title: "Why Choose Magnevents?",
-    subtitle: "Your Trusted Partner for Live Music Booking",
+    subtitle: "💎 Why Choose Magnevents?",
     icon: "💎",
     link: "/why-choose",
     points: ["Handpicked for You", "Hassle-Free Booking", "Complete Setup"],
@@ -287,7 +287,7 @@ export const PREMIUM_CARDS = [
   {
     id: 'why-choose',
     title: 'Why Choose Magnevents?',
-    subtitle: 'Your Trusted Partner for Live Music',
+    subtitle: "💎 Why Choose Magnevents?",
     desc: 'Carefully selected singers, bands, and musicians based on event style and budget.',
     icon: '💎',
     path: '/why-choose',

@@ -24,89 +24,148 @@
   margin: 0 auto;
 }
 
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+.services-category-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
 }
 
-.service-item-card {
-  position: relative;
-  border-radius: 32px;
-  overflow: hidden;
-  background: rgba(20, 20, 20, 0.4);
+.service-category-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.service-category-title {
+  font-family: var(--font-display, serif);
+  font-size: 32px;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 16px;
+  margin: 0;
+}
+
+.hover-video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.hover-video-card {
+  background: rgba(20, 20, 20, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.service-media {
+.hover-video-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transform: translateY(-5px);
+}
+
+.video-aspect-ratio {
   position: relative;
-  aspect-ratio: 16/9;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  background: #000;
   overflow: hidden;
 }
 
-.service-media img {
+.video-thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s ease;
+  transition: opacity 0.3s ease;
 }
 
-.service-item-card:hover .service-media img {
-  transform: scale(1.1);
+.auto-playing-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  animation: fadeIn 0.3s ease forwards;
 }
 
-.service-overlay {
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.book-now-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
-}
-
-.service-content {
-  padding: 40px;
-  flex: 1;
+  background: rgba(0, 0, 0, 0.4); /* subtle dark overlay over the playing video */
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10;
 }
 
-.service-content h3 {
-  font-size: 28px;
-  margin-bottom: 16px;
-  color: #fff;
-  font-family: var(--font-display);
+.book-now-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.service-content p {
-  font-size: 16px;
-  color: #8a8f98;
-  margin-bottom: 32px;
-  line-height: 1.6;
-  flex: 1;
-}
-
-.service-action-btn {
-  width: fit-content;
-  padding: 14px 28px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-.service-action-btn:hover {
+.book-now-btn {
   background: #FFE032;
   color: #000;
-  border-color: #FFE032;
-  box-shadow: 0 10px 20px rgba(255, 224, 50, 0.2);
+  padding: 12px 32px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 20px rgba(255, 224, 50, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-@media (max-width: 900px) {
-  .services-grid { grid-template-columns: 1fr; }
-  .service-content { padding: 30px; }
-  .services-header h1 { font-size: 40px; }
+.book-now-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(255, 224, 50, 0.5);
+}
+
+.hover-video-info {
+  padding: 16px 20px;
+  background: linear-gradient(180deg, rgba(15,15,15,1) 0%, rgba(10,10,10,1) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hover-video-info h4 {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  font-family: var(--font-display, serif);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 1024px) {
+  .hover-video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .hover-video-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-category-title {
+    font-size: 24px;
+  }
 }

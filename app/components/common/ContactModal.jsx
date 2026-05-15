@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { bookingService } from '@/app/services/bookingService'
 import '@/app/styles/components/ContactModal.css'
 
-export default function ContactModal({ isOpen, onClose, initialType = 'booking' }) {
+export default function ContactModal({ isOpen, onClose, initialType = 'booking', initialArtist = null }) {
   const [formType, setFormType] = useState(initialType) // 'booking' | 'contact' | 'register'
   
   const [formData, setFormData] = useState({
@@ -17,26 +17,29 @@ export default function ContactModal({ isOpen, onClose, initialType = 'booking' 
     location: '',
     artistType: [],
     budget: '',
-    message: ''
+    budget: '',
+    message: '',
+    selectedArtist: initialArtist
   })
   
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
-  // Sync with initialType when modal opens
+  // Sync with initial props when modal opens
   useEffect(() => {
     if (isOpen) {
       setFormType(initialType)
       setSubmitted(false)
+      setFormData(prev => ({ ...prev, selectedArtist: initialArtist }))
     }
-  }, [isOpen, initialType])
+  }, [isOpen, initialType, initialArtist])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
     
     try {
-      await bookingService.submitRequest(formData)
+      await bookingService.submitRequest({ ...formData, formType })
       setIsSubmitting(false)
       setSubmitted(true)
       
@@ -45,7 +48,7 @@ export default function ContactModal({ isOpen, onClose, initialType = 'booking' 
         onClose()
         setFormData({ 
           name: '', email: '', phone: '', eventType: '', 
-          date: '', location: '', artistType: [], budget: '', message: '' 
+          date: '', location: '', artistType: [], budget: '', message: '', selectedArtist: null
         })
       }, 2500)
     } catch (error) {
@@ -87,10 +90,18 @@ export default function ContactModal({ isOpen, onClose, initialType = 'booking' 
             <h3 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '32px' }}>
               {formType === 'register' ? 'Artist Registration' : 'Booking form'}
             </h3>
-            <p>
-              {formType === 'register' ? 'Showcase your talent to the world. Join Magnevents and perform at premium venues.' :
-               'Tell us your vision, and we will find the perfect stage presence for you.'}
-            </p>
+            {formData.selectedArtist ? (
+              <div style={{ marginTop: '12px', padding: '10px 16px', background: 'rgba(255,224,50,0.1)', border: '1px solid rgba(255,224,50,0.2)', borderRadius: '8px', display: 'inline-block' }}>
+                <span style={{ color: '#FFE032', fontSize: '14px', fontWeight: '500' }}>
+                  Booking Inquiry for: {typeof formData.selectedArtist === 'string' ? formData.selectedArtist : formData.selectedArtist?.name || 'Artist'}
+                </span>
+              </div>
+            ) : (
+              <p>
+                {formType === 'register' ? 'Showcase your talent to the world. Join Magnevents and perform at premium venues.' :
+                 'Tell us your vision, and we will find the perfect stage presence for you.'}
+              </p>
+            )}
           </div>
 
           {submitted ? (

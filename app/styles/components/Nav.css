@@ -141,14 +141,14 @@
   transform: translateX(-50%) translateY(10px);
   width: 90vw;
   max-width: 1000px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: #1d1c1c;
+  border: 1px solid #070707;
   border-radius: var(--radius-xl);
   padding: var(--spacing-5);
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
-  box-shadow: var(--shadow-card-hover);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
 }
 
 .lux-nav-dropdown-wrap.is-mega:hover .lux-mega-menu {
@@ -169,7 +169,7 @@
   justify-content: space-between;
   padding: 16px 20px;
   background: transparent;
-  border: 1px solid var(--border-light);
+  border: 1px solid #313131;
   border-radius: var(--radius-md);
   font-size: 0.95rem;
   font-weight: 500;
@@ -237,6 +237,19 @@
   transform: translateY(-2px);
   background: var(--brand-primary-hover);
   box-shadow: var(--shadow-glow);
+}
+
+.lux-nav-cta.secondary {
+  background: #D65050;
+  color: #fff;
+  border: 1px solid rgba(214, 80, 80, 0.5);
+  box-shadow: 0 4px 15px rgba(214, 80, 80, 0.3);
+}
+
+.lux-nav-cta.secondary:hover {
+  background: #b53e3e;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(214, 80, 80, 0.5);
 }
 
 .lux-hamburger {

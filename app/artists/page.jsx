@@ -1,26 +1,86 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { AppShellWrapper } from '@/app/layouts/AppShellWrapper'
 import ArtistCard from '@/app/components/artists/ArtistCard'
-import { ALL_ARTISTS, ARTISTS_CAT_FILTER } from '@/app/constants'
+import { ARTISTS_CAT_FILTER } from '@/app/constants'
+import { supabase } from '@/app/lib/supabase'
 import '@/app/styles/pages/Artists.css'
 
 /**
  * ArtistsPage Component
  * 
  * Displays a filterable grid of elite performers.
- * Refactored to use modular ArtistCard and centralized constants.
+ * Fetches standard artist profiles from Supabase.
  */
 export default function ArtistsPage() {
   const router = useRouter()
   const [activeCategory, setActiveCategory] = useState('All')
+  const [artists, setArtists] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchArtists = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('artists')
+          .select('*, artist_images(image_url)')
+          .eq('is_popular', false)
+          .eq('is_artist_of_month', false)
+        
+        if (error) throw error
+
+        const formattedArtists = data.map(artist => ({
+          id: artist.id,
+          name: artist.name,
+          category: artist.category,
+          subCategory: artist.sub_category,
+          city: artist.city,
+          state: artist.state,
+          languages: artist.performing_language,
+          priceMin: artist.price_min,
+          priceMax: artist.price_max,
+          img: artist.artist_images?.[0]?.image_url || null,
+          quote: artist.bio || '',
+        }))
+        
+        setArtists(formattedArtists)
+      } catch (err) {
+        console.error('Error fetching artists:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchArtists()
+  }, [])
+
+  useEffect(() => {
+    // Read category from URL if present
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search)
+      const catParam = params.get('category')
+      if (catParam) {
+        // Find matching category in ARTISTS_CAT_FILTER (case insensitive, handle plurals)
+        const match = ARTISTS_CAT_FILTER.find(
+          c => c.toLowerCase() === catParam.toLowerCase() || 
+               c.toLowerCase() === catParam.toLowerCase() + 's' ||
+               c.toLowerCase().replace(/s$/, '') === catParam.toLowerCase()
+        )
+        if (match) setActiveCategory(match)
+      }
+    }
+  }, [])
 
   const filteredArtists = activeCategory === 'All' 
-    ? ALL_ARTISTS 
-    : ALL_ARTISTS.filter(a => a.category === activeCategory)
+    ? artists 
+    : artists.filter(a => {
+        const aCat = (a.category || '').toLowerCase()
+        const filterCat = activeCategory.toLowerCase()
+        return aCat === filterCat || aCat === filterCat.replace(/s$/, '') || aCat + 's' === filterCat
+      })
 
   const handleBook = (name) => {
     router.push(`/book?artist=${encodeURIComponent(name)}`)
@@ -30,21 +90,7 @@ export default function ArtistsPage() {
     <main className="artists-page">
       <div className="lux-container">
         
-        <header className="artists-header">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            Elite <span className="text-gradient">Performers</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-          >
-            Handpicked talent curated for the most extraordinary events across the globe.
-          </motion.p>
-        </header>
+
 
         <div className="artists-filters">
           {ARTISTS_CAT_FILTER.map((cat, idx) => (
@@ -62,15 +108,23 @@ export default function ArtistsPage() {
         </div>
 
         <div className="artists-grid">
-          <AnimatePresence mode='popLayout'>
-            {filteredArtists.map((artist) => (
-              <ArtistCard 
-                key={artist.id} 
-                artist={artist} 
-                onBook={handleBook} 
-              />
-            ))}
-          </AnimatePresence>
+          {loading ? (
+            <p style={{ textAlign: 'center', width: '100%', color: 'white' }}>Loading artists...</p>
+          ) : (
+            <AnimatePresence mode='popLayout'>
+              {filteredArtists.length > 0 ? (
+                filteredArtists.map((artist) => (
+                  <ArtistCard 
+                    key={artist.id} 
+                    artist={artist} 
+                    onBook={handleBook} 
+                  />
+                ))
+              ) : (
+                <p style={{ textAlign: 'center', width: '100%', color: 'white' }}>No standard artists found.</p>
+              )}
+            </AnimatePresence>
+          )}
         </div>
 
       </div>

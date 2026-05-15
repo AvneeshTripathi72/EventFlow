@@ -46,6 +46,33 @@ export default function FeaturedArtistsSection() {
     return () => window.clearInterval(id)
   }, [pauseFeatured])
 
+  const [isDragging, setIsDragging] = useState(false)
+  const [startX, setStartX] = useState(0)
+  const [scrollLeft, setScrollLeft] = useState(0)
+
+  const handleMouseDown = (e) => {
+    setIsDragging(true)
+    setStartX(e.pageX - featuredRef.current.offsetLeft)
+    setScrollLeft(featuredRef.current.scrollLeft)
+  }
+
+  const handleMouseLeave = () => {
+    setIsDragging(false)
+    setPauseFeatured(false)
+  }
+
+  const handleMouseUp = () => {
+    setIsDragging(false)
+  }
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return
+    e.preventDefault()
+    const x = e.pageX - featuredRef.current.offsetLeft
+    const walk = (x - startX) * 2
+    featuredRef.current.scrollLeft = scrollLeft - walk
+  }
+
   return (
     <FadeSection className="hp-shell hp-block hp-featured-section">
       <div className="hp-feat-head-v2">
@@ -80,7 +107,11 @@ export default function FeaturedArtistsSection() {
         className="hp-feat-carousel"
         ref={featuredRef}
         onMouseEnter={() => setPauseFeatured(true)}
-        onMouseLeave={() => setPauseFeatured(false)}
+        onMouseLeave={handleMouseLeave}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
+        style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
       >
         {FEATURED_ARTISTS.map((artist, i) => (
           <motion.div
@@ -118,7 +149,7 @@ export default function FeaturedArtistsSection() {
                 <div className="hp-feat-btn-grid">
                   <button
                     onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal', { 
-                      detail: { type: 'booking', artist: artist.name } 
+                      detail: { type: 'booking', artist: artist } 
                      }))}
                     className="hp-btn-book-v2"
                   >

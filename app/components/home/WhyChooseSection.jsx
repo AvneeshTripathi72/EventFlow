@@ -8,8 +8,7 @@ export default function WhyChooseSection() {
   return (
     <FadeSection className="hp-shell hp-block">
       <div className="hp-section-head">
-        <p className="hp-eyebrow">💎 Why Choose Magnevents?</p>
-        <h2>Your Trusted Partner</h2>
+        <h2>💎 Why Choose Magnevents?</h2>
       </div>
       <div className="hp-why-grid">
         {WHY_POINTS.map((item, i) => (
